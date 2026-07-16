@@ -36,7 +36,7 @@ class KoreanHandEvaluator implements HandEvaluator{
 	
 	/*
 	 * 족보 판독 순서
-	 * 족보 판독 순서를 수정한 경우 
+	 * 족보 판독 순서를 수정할 경우 
 	 * 족보 판독에 에러 발생
 	 */
 	private final List<Function<HandData, Optional<HandResult>>> judges = List.of(
@@ -58,6 +58,7 @@ class KoreanHandEvaluator implements HandEvaluator{
 			throw new IllegalArgumentException(NOT_VALID_CARDS);
 		}
 		
+		// 데이터 수집 및 저장
 		HandData data = prepareData(List.copyOf(cards));
 		
 		return judges.stream()
@@ -69,13 +70,28 @@ class KoreanHandEvaluator implements HandEvaluator{
 	
 	// 데이터 전처리
 	private HandData prepareData(List<Card> cards) {
+		
 		// 데이터 초기화
+		
 		Map<CardSuit, Integer> suitCount = new EnumMap<>(CardSuit.class);
+		// CardSuit : 개수 -> 스페이드 : 1 
+		
 		Map<CardRank, Integer> numberCount = new EnumMap<>(CardRank.class);
+		// CardRank : 개수 -> ACE : 2
+		
 		Map<Integer, Integer> groupCount = new HashMap<>();
+		// 그룹 : 개수 -> 3장그룹 : 1 
+		// numberCount 의 value 가 Key 가 된다.
+		
 		List<CardRank> numberOrder = new ArrayList<>();
+		// cards 에서 CardRank 만 뽑아서 내림차순 정렬한 것
+		
 		boolean flush = false;
+		// flush 유무
+		
 		List<CardRank> flushOrder = new ArrayList<>();
+		// flush 를 만족하는 경우 
+		// 해당 CardSuit 인 카드들의 CardRank 만 뽑아서 내림차순 정렬한 것
 		
 		// 모양의 개수와
 		// 숫자의 개수

@@ -2,6 +2,85 @@ package workflow;
 
 public class CU {
 
+	// 포인트 결제 메소드
+	public static int buyPoint(int amount, int point) {
+		
+		int pointToUse = point;
+		if (point >= amount) {
+			pointToUse = amount;
+		}
+		point -= pointToUse;
+		amount -= pointToUse;
+		
+		System.out.println("차감 포인트: " + pointToUse);
+		System.out.println("잔여 포인트: " + point);
+		System.out.println("잔여 결제 금액: " + amount);
+		
+		return amount;
+	}
+	
+	// 체크 카드 결제 메소드
+	public static int buyCheckCard(int amount, int remainAccount) {
+		
+		if (remainAccount < amount) {
+			System.out.println("잔액이 부족합니다.");
+			return amount;
+		} else {
+			remainAccount -= amount;
+			System.out.println("체크카드 결제 완료");
+			System.out.println("계좌 잔액: " + remainAccount);
+			return 0;
+		}
+	}
+	
+	// 5만원 이상 신용 카드 결제 서명 메소드
+	public static void creditSign(int amount) {
+		System.out.println("할부 / 일시불?");
+		// 할부 == 0, 일시불 == 1
+		int payType = (int)(Math.random() * 2);
+		if (payType == 0) {
+			System.out.println("할부를 선택했습니다.");
+			int duration = (int)(Math.random() * 4) + 2;
+			System.out.println(duration + "개월 할부 결제 합니다.");
+			System.out.println(duration + "개월 동안 월 " + (amount / duration) + "원 결제 합니다.");
+		} else {
+			System.out.println("일시불을 선택했습니다.");
+		}
+		System.out.println("서명하세요.");
+	}
+	
+	// 신용 카드 결제 메소드
+	public static int buyCreditCard(int amount,int CARD_LIMIT, int cardPaidMoney) {
+		
+		if (amount >= 50_000) {
+			creditSign(amount);
+		}
+		
+		if (CARD_LIMIT < amount + cardPaidMoney) {
+			System.out.println("한도 초과!");
+			return amount;
+		} else {
+			// 신용카드로 결제했을 때 카드 결제금액을 최종 결제 금액만큼 증가.
+			cardPaidMoney += amount;
+			System.out.println("신용카드 결제 완료");
+			System.out.println("현재 사용금액: " + cardPaidMoney);
+			return 0;
+		}
+	}
+	
+	// 현금 결제 메소드
+	public static int buyCash(int cash, int amount) {
+		
+		if (cash >= amount) {
+			System.out.println("남은 잔액: " + ( cash - amount ) + "원");
+			return 0;
+		} else {
+			System.out.println("현금이 부족합니다.");
+			return amount;
+		}
+	}
+	
+	// 결제 기능을 수행하는 메소드
 	public static int pay(int amount, int cash, int CARD_LIMIT
 			, int cardPaidMoney, int remainAccount, int point) {
 		
@@ -12,66 +91,33 @@ public class CU {
 		
 		// 결제 수단 선택
 		if (payment == 0) {
-			// 현금으로 결제했을 때 보유한 현금을 최종 결제 금액만큼 차감
 			System.out.println("현금 결제 선택");
 			System.out.println("현재 잔액: " + cash + "원");
-			if (cash >= amount) {
-				cash -= amount;
-				System.out.println("남은 잔액: " + cash + "원");
-				amount = 0;
-			} else {
-				System.out.println("현금이 부족합니다.");
-			}
-		} else if (payment == 1) {
-			// 신용카드 & 결제금액 5만원 이상일 경우 할부 또는 일시불 선택
-			System.out.println("신용 카드 결제 선택");
-			if (amount >= 50_000) {
-				System.out.println("할부 / 일시불?");
-				// 할부 == 0, 일시불 == 1
-				int payType = (int)(Math.random() * 2);
-				if (payType == 0) {
-					System.out.println("할부를 선택했습니다.");
-					int duration = (int)(Math.random() * 4) + 2;
-					System.out.println(duration + "개월 할부 결제 합니다.");
-					System.out.println(duration + "개월 동안 월 " + (amount / duration) + "원 결제 합니다.");
-				} else {
-					System.out.println("일시불을 선택했습니다.");
-				}
-				System.out.println("서명하세요.");
-			}
+			// 현금으로 결제했을 때 보유한 현금을 최종 결제 금액만큼 차감
+			// TODO 현금 결제 기능을 하는 메소드 작성
+			// TODO amount = 현금 결제 후 잔여 결제 금액을 반환
+			amount = buyCash(cash, amount);
 			
-			if (CARD_LIMIT < amount + cardPaidMoney) {
-				System.out.println("한도 초과!");
-			} else {
-				// 신용카드로 결제했을 때 카드 결제금액을 최종 결제 금액만큼 증가.
-				cardPaidMoney += amount;
-				System.out.println("신용카드 결제 완료");
-				System.out.println("현재 사용금액: " + cardPaidMoney);
-				amount = 0;
-			}
+		} else if (payment == 1) {
+			System.out.println("신용 카드 결제 선택");
+			// 신용카드 & 결제금액 5만원 이상일 경우 할부 또는 일시불 선택
+			// TODO 신용카드 결제 기능을 하는 메소드 작성
+			// TODO amount = 신용카드 결재 후 잔여 결제 금액을 반환
+			amount = buyCreditCard(amount, CARD_LIMIT, cardPaidMoney);
+			
 		} else if (payment == 2) {
 			System.out.println("체크 카드 결제 선택");
-			if (remainAccount < amount) {
-				System.out.println("잔액이 부족합니다.");
-			} else {
-				remainAccount -= amount;
-				System.out.println("체크카드 결제 완료");
-				System.out.println("계좌 잔액: " + remainAccount);
-				amount = 0;
-			}
+			// TODO 체크카드 결제 기능을 하는 메소드 작성
+			// TODO amount = 체크카드 결제 후 잔여 결제 금액을 반환
+			amount = buyCheckCard(amount, remainAccount);
+			
 		} else if (payment == 3) {
+			// TODO 포인트 선결제 기능을 하는 메소드 작성
+			// TODO amount = 포인트 선결제 후 잔여 결제 금액을 반환
 			System.out.println("포인트 선결제 선택");
 			// 포인트 선결제 했을 때 포인트를 최종 결제 금액만큼 차감.
-			int pointToUse = point;
-			if (point >= amount) {
-				pointToUse = amount;
-			}
-			point -= pointToUse;
-			amount -= pointToUse;
+			amount = buyPoint(amount, point);
 			
-			System.out.println("차감 포인트: " + pointToUse);
-			System.out.println("잔여 포인트: " + point);
-			System.out.println("잔여 결제 금액: " + amount);
 		} else {
 			System.out.println("결제 포기 선택");
 			amount = 0;

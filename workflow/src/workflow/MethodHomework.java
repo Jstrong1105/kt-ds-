@@ -10,8 +10,9 @@ package workflow;
  * 1. 정수형 변수 2개를 파라미터로 받아, 값을 출력하는 메소드.
  * 2. 정수형 변수 2개를 파라미터로 받아, 합계를 출력하는 메소드.
  * 3. 정수형 변수 3개를 파라미터로 받아, 합계를 반환하는 메소드.
- * 4. 정수형 변수 2개를 파라미터로 받아, 나누기의 결과(실수)를 반환하는 메소드.
- * 5. 실수형 변수 1개와 정수형 파라미터 1개를 받아 소수점 이하 자리수를 변경하여 반환하는 메소드.
+ * 4. 정수형 변수 2개를 파라미터로 받아, 나누기의 결과(실수)를 출력하는 메소드.
+ * 5. 정수형 변수 2개를 파라미터로 받아, 나누기의 결과(실수)를 반환하는 메소드.
+ * 6. 실수형 변수 1개와 정수형 파라미터 1개를 받아 소수점 이하 자리수를 변경하여 반환하는 메소드.
  * 
  *    -> 예> 소수점 변경(10.33333333, 2) ==> 10.33 
  * 
@@ -21,13 +22,13 @@ package workflow;
  * 
  *    -> 예> 소수점 변경(10.33333333, 0) ==> 10.0
  * 
- * 6. 실수형 변수 2개를 파라미터로 받아, 가장 큰 수만 반환하는 메소드.
- * 7. 실수형 변수 4개를 파라미터로 받아, 가장 작은 수만 반환하는 메소드.
- * 8. 정수 배열을 파라미터로 받아, 2,5,8 배수인 숫자만 출력하는 메소드.
- * 9. 문자열 1개와 정수형 변수 1개를 파라미터로 받아, 문자열을 정수형 변수만큼 반복 출력하는 메소드.
- * 10. 정수형 변수 1개를 파라미터로 받아, 해당 정수의 구구단을 출력하는 메소드.
- * 11. 정수형 변수 1개를 파라미터로 받아, 4부터 정수형 변수까지의 범위 중 소수(Prime Number)만 출력하는 메소드.
- * 12. 정수형 배열 변수 1개와 정수형 변수 1개를 파라미터로 받아, 해당 배열의 정수형변수 인덱스에 의 값을 반환하는 메소드.
+ * 7. 실수형 변수 2개를 파라미터로 받아, 가장 큰 수만 반환하는 메소드.
+ * 8. 실수형 변수 4개를 파라미터로 받아, 가장 작은 수만 반환하는 메소드.
+ * 9. 정수 배열을 파라미터로 받아, 2,5,8 배수인 숫자만 출력하는 메소드.
+ * 10. 문자열 1개와 정수형 변수 1개를 파라미터로 받아, 문자열을 정수형 변수만큼 반복 출력하는 메소드.
+ * 11. 정수형 변수 1개를 파라미터로 받아, 해당 정수의 구구단을 출력하는 메소드.
+ * 12. 정수형 변수 1개를 파라미터로 받아, 4부터 정수형 변수까지의 범위 중 소수(Prime Number)만 출력하는 메소드.
+ * 13. 정수형 배열 변수 1개와 정수형 변수 1개를 파라미터로 받아, 해당 배열의 정수형변수 인덱스에 의 값을 반환하는 메소드.
  * 
  *     -> 예> 값(길이가 5인 배열, 2) ==> 배열의 2번 인덱스의 값
  * 
@@ -45,16 +46,16 @@ package workflow;
  * 
  *     -> 예> 값(길이가 5인 배열, 7) ==> 0
  * 
- * 13. 정수형 배열 변수 1개를 파라미터로 받아, 가장 처음 나오는 3의 배수만 반환하는 메소드    - 정수형 배열 변수내부에 3의 배수가 없을 경우 -1 을 반환.
- * 14. 정수형 배열 변수 2개를 파라미터로 받아, 각 배열에 중복값만 출력하는 메소드.
+ * 14. 정수형 배열 변수 1개를 파라미터로 받아, 가장 처음 나오는 3의 배수만 반환하는 메소드    - 정수형 배열 변수내부에 3의 배수가 없을 경우 -1 을 반환.
+ * 15. 정수형 배열 변수 2개를 파라미터로 받아, 각 배열에 중복값만 출력하는 메소드.
  * 
  *     -> 중복([1,2,3,4,5], [9,7,454,1,2,3]) ==> 1 2 3
  * 
- * 15. 정수형 배열 변수 2개를 파라미터로 받아, 각 배열에 중복되지 않는 값만 출력하는 메소드.
+ * 16. 정수형 배열 변수 2개를 파라미터로 받아, 각 배열에 중복되지 않는 값만 출력하는 메소드.
  * 
  * 		-> 고유([1,2,3,4,5], [9,7,454,1,2,3]) ==> 4, 5, 9. 7, 454
  * 
- * 16. 정수형 배열 변수 1개를 파라미터로 받아, 모든 값들을 배수로 만드는 (반환x) 메소드
+ * 17. 정수형 배열 변수 1개를 파라미터로 받아, 모든 값들을 배수로 만드는 (반환x) 메소드
  * 
  * 		-> 호출 이후에 main 메소드 내부에서 배열 내부의 값들을 모두 출력.
  */    
@@ -75,14 +76,20 @@ public class MethodHomework {
 	public static int addThreeNumber(int num1, int num2, int num3) {
 		return (num1 + num2 + num3);
 	}
+
+	// 4. 정수형 변수 2개를 파라미터로 받아, 나누기의 결과(실수)를 출력하는 메소드.
+	public static void printDivisionTwoNumber(int num1, int num2) {
+		
+		System.out.println( ( num1 / (double) num2 ) );
+	}
 	
-	// 4. 정수형 변수 2개를 파라미터로 받아, 나누기의 결과(실수)를 반환하는 메소드.
+	// 5. 정수형 변수 2개를 파라미터로 받아, 나누기의 결과(실수)를 반환하는 메소드.
 	public static double divisionTwoNumber(int num1, int num2) {
 		
 		return num1 / (double) num2;
 	}
 	
-	// 5. 실수형 변수 1개와 정수형 파라미터 1개를 받아 소수점 이하 자리수를 변경하여 반환하는 메소드.
+	// 6. 실수형 변수 1개와 정수형 파라미터 1개를 받아 소수점 이하 자리수를 변경하여 반환하는 메소드.
 	public static double setDigit(double number, int digit) {
 		
 		int value = 1;
@@ -96,7 +103,7 @@ public class MethodHomework {
 		return result / (double) value;
 	}
 	
-	// 6. 실수형 변수 2개를 파라미터로 받아, 가장 큰 수만 반환하는 메소드.
+	// 7. 실수형 변수 2개를 파라미터로 받아, 가장 큰 수만 반환하는 메소드.
 	public static double findMaxNumber(double num1, double num2) {
 		
 		double result = num1;
@@ -108,7 +115,7 @@ public class MethodHomework {
 		return result;
 	}
 	
-	// 7. 실수형 변수 4개를 파라미터로 받아, 가장 작은 수만 반환하는 메소드.
+	// 8. 실수형 변수 4개를 파라미터로 받아, 가장 작은 수만 반환하는 메소드.
 	public static double findMinNumber(double num1, double num2
 			                         , double num3, double num4) {
 		double result = num1;
@@ -128,7 +135,7 @@ public class MethodHomework {
 		return result;
 	}
 	
-	// 8. 정수 배열을 파라미터로 받아, 2,5,8 배수인 숫자만 출력하는 메소드.
+	// 9. 정수 배열을 파라미터로 받아, 2,5,8 배수인 숫자만 출력하는 메소드.
 	public static void printMultiple(int[] array) {
 		
 		for(int i = 0; i < array.length; i++) {
@@ -138,7 +145,7 @@ public class MethodHomework {
 		}
 	}
 	
-	// 9. 문자열 1개와 정수형 변수 1개를 파라미터로 받아, 문자열을 정수형 변수만큼 반복 출력하는 메소드.
+	// 10. 문자열 1개와 정수형 변수 1개를 파라미터로 받아, 문자열을 정수형 변수만큼 반복 출력하는 메소드.
 	public static void printRepeat(String prompt, int count) {
 		
 		for(int i = 0; i < count; i++) {
@@ -146,7 +153,7 @@ public class MethodHomework {
 		}
 	}
 	
-	// 10. 정수형 변수 1개를 파라미터로 받아, 해당 정수의 구구단을 출력하는 메소드.
+	// 11. 정수형 변수 1개를 파라미터로 받아, 해당 정수의 구구단을 출력하는 메소드.
 	public static void printTable(int dan) {
 		
 		for(int i = 1; i < 10; i++) {
@@ -154,7 +161,7 @@ public class MethodHomework {
 		}
 	}
 	
-	// 11. 정수형 변수 1개를 파라미터로 받아, 4부터 정수형 변수까지의 범위 중 소수(Prime Number)만 출력하는 메소드.
+	// 12. 정수형 변수 1개를 파라미터로 받아, 4부터 정수형 변수까지의 범위 중 소수(Prime Number)만 출력하는 메소드.
 	public static void printPrime(int num) {
 		
 		for(int i = 4; i <= num; i++) {
@@ -165,8 +172,8 @@ public class MethodHomework {
 		}
 	}
 	
-	// 11-1
-	// 11 문제에서 활용하는 메소드
+	// 12-1
+	// 12 문제에서 활용하는 메소드
 	private static boolean isPrime(int num) {
 		
 		boolean prime = true;
@@ -181,7 +188,7 @@ public class MethodHomework {
 		return prime;
 	}
 	
-	// 12. 정수형 배열 변수 1개와 정수형 변수 1개를 파라미터로 받아, 해당 배열의 정수형변수 인덱스에 의 값을 반환하는 메소드.
+	// 13. 정수형 배열 변수 1개와 정수형 변수 1개를 파라미터로 받아, 해당 배열의 정수형변수 인덱스에 의 값을 반환하는 메소드.
 	public static int getArray(int[] array, int index) {
 		
 		// index 가 음수이거나 배열 범위를 벗어난 경우
@@ -192,7 +199,7 @@ public class MethodHomework {
 		return array[index];
 	}
 	
-	// 13. 정수형 배열 변수 1개를 파라미터로 받아, 가장 처음 나오는 3의 배수만 반환하는 메소드    - 정수형 배열 변수내부에 3의 배수가 없을 경우 -1 을 반환.
+	// 14. 정수형 배열 변수 1개를 파라미터로 받아, 가장 처음 나오는 3의 배수만 반환하는 메소드    - 정수형 배열 변수내부에 3의 배수가 없을 경우 -1 을 반환.
 	public static int getThreeMultiple(int[] array) {
 		
 		int result = -1;
@@ -208,7 +215,7 @@ public class MethodHomework {
 		return result;
 	}
 	
-	// 14. 정수형 배열 변수 2개를 파라미터로 받아, 각 배열에 중복값만 출력하는 메소드.
+	// 15. 정수형 배열 변수 2개를 파라미터로 받아, 각 배열에 중복값만 출력하는 메소드.
 	public static void printDuplication(int[] array1, int[] array2) {
 		
 		for(int i = 0; i < array1.length; i++) {
@@ -220,7 +227,7 @@ public class MethodHomework {
 		}
 	}
 	
-	// 15. 정수형 배열 변수 2개를 파라미터로 받아, 각 배열에 중복되지 않는 값만 출력하는 메소드.
+	// 16. 정수형 배열 변수 2개를 파라미터로 받아, 각 배열에 중복되지 않는 값만 출력하는 메소드.
 	public static void printUnique(int[] array1, int[] array2) {
 		
 		for(int i = 0; i < array1.length; i++) {
@@ -241,7 +248,7 @@ public class MethodHomework {
 		}
 	}
 	
-	// 16. 정수형 배열 변수 1개를 파라미터로 받아, 모든 값들을 배수로 만드는 (반환x) 메소드
+	// 17. 정수형 배열 변수 1개를 파라미터로 받아, 모든 값들을 배수로 만드는 (반환x) 메소드
 	public static void allDouble(int[] array) {
 		
 		for(int i = 0; i < array.length; i++) {

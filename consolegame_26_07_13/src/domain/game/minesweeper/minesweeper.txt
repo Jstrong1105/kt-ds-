@@ -1,0 +1,73 @@
+minesweeper 패키지 개요
+
+	MinesweeperFactory 를 제외한 모든 클래스, 인터페이스, enum, Record 은
+	패키지 프라이빗으로 구성되어 외부에 공개되어 있지 않다.
+	유일하게 MinesweeperFactory 만이 외부에 공개되어 있으며
+	GameApp 객체를 반환하는 메소드를 가지고 있다.
+
+○ CellStatus Enum
+	- 지뢰찾기에서 한칸의 셀이 가질 수 있는 상태 값 
+	- OPEN, HIDDEN, FLAG
+	- 각각의 상태 값에서 open, toggleFlag 의 액션 발생 시 전이되는 규칙을 보유하고 있음
+	
+	※ 각각의 상태 별 전이 규칙
+		● open 액션 발생 시
+		- open -> open
+		- flag -> flag
+		- hidden -> open
+		
+		● toggleFlag 액션 발생 시
+		- open -> open
+		- flag -> hidden
+		- hidden -> flag
+		
+○ CellPosition class
+	- 지뢰찾기 한칸의 좌표를 나타내는 객체
+	- 각각의 Cell 들이 별도로 자신의 좌표를 가지고 있는 것은 아니다.
+	- 주변 8칸을 연쇄적으로 개방하는 메소드를 구현할때 사용한다.
+	
+○ CellView Record
+	- 한칸의 Cell 객체가 가지고 있는 속성을 불변 타입으로 전달하는 용도
+	- CellPrinter 에서 Cell 자체를 넘겨줄 경우 
+	  CellPrinter 에서 Cell 의 데이터를 수정해버린다면 
+	  Cell 자체가 바뀌어져 버리는 문제가 있기 때문에
+	  Cell 이 가지고 있는 속성을 Record로 구성해서 넘겨주어 다른 클래스에서 
+	  Cell 의 정보를 수정하지 못하도록 하는 용도 
+
+○ Cell 클래스
+	- 지뢰찾기에서 한칸을 담당하는 클래스
+	- 보드판은 Cell[][] 을 가지고 지뢰찾기를 진행한다.
+	- 각각의 칸이 현재 어떤 상태인지, 지뢰인지, 근처에 지뢰가 몇개 있는 지 등의 정보를 담고 있다.
+	
+○ CellPrinter 인터페이스
+	- CellView[][] 을 받아 콘솔창에 출력하는 기능을 수행하는 인터페이스
+	- 실제 구현 객체는 ConsoleCellPrinter
+	- 현재 계획은 없지만 추후 다른 방식으로 구현할 경우 
+	  Printer 객체를 손쉽게 교체하기 위함 	
+	
+○ ConsoleCellPrinter 클래스
+	- CellPrinter 인터페이스를 상속받아 구현한 클래스
+	- CellView[][] 을 받아 배열의 크기에 따라 상단 하단 을 만들고
+	  Cell 의 상태에 따라 화면 상에 출력하는 클래스
+	- ANSI 색상 코드를 활용해 CONSOLE 환경에서 가독성을 높임
+
+○ CellBoard 인터페이스
+	- 지뢰찾기에서 필요한 기능을 나열한 인터페이스
+	- 실제 구현 객체는 ArrayCellBoard
+	- 지뢰찾기에서 필요한 열기, 깃발 설치/회수, 지뢰 여부 확인 등의 기능을 가지고 있다.
+
+○ ArrayCellBoard 클래스
+	- CellBoard 인터페이스를 상속해 구현한 클래스
+	- 지뢰찾기 보드판 객체를 보유하고 있다. 
+	- 지뢰찾기에서 필요한 핵심적인 기능을 실제로 구현하고 있다.
+	- 지뢰 매설, 빈칸을 연쇄적으로 여는 기능 등등
+
+○ MinesweeperApp 클래스
+	- DoubleActionTemplate 추상 클래스를 상속해 구현한 클래스
+	- 실제 사용자의 입력을 받아 지뢰찾기 보드판과 상호작용을 하는 클래스
+
+○ MinesweeperFactory 클래스
+	- minesweeper 패키지에서 유일한 public 클래스
+	- 수행하는 역할은 실제로 MinesweeperApp 이 구동하기 위해 필요한
+	  객체를 생성해 주입하고 그렇게 만들어진 MinesweeperApp 을 반환함.
+	

@@ -1,0 +1,15 @@
+# 컴파일 결과물
+*.class
+bin/
+build/
+target/
+out/
+
+# Eclipse 설정 파일
+.metadata/
+.settings/
+.classpath
+.project
+.factorypath
+*.launch
+.recommenders/

@@ -91,16 +91,23 @@ public class MethodHomework {
 	
 	// 6. 실수형 변수 1개와 정수형 파라미터 1개를 받아 소수점 이하 자리수를 변경하여 반환하는 메소드.
 	public static double setDigit(double number, int digit) {
+
+		double value = 1.0;
 		
-		int value = 1;
-		
-		for(int i = 0; i < digit; i++) {
-			value *= 10;
+		if (digit >= 0){
+			for(int i = 0; i < digit; i++) {
+				value *= 10;
+			}
 		}
-		
+		else {
+			for(int i = 0; i < -digit; i++){
+				value /= 10;
+			}
+		}
+
 		int result = (int) (number * value);
-		
-		return result / (double) value;
+			
+		return result / value;	
 	}
 	
 	// 7. 실수형 변수 2개를 파라미터로 받아, 가장 큰 수만 반환하는 메소드.

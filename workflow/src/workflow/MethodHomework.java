@@ -80,7 +80,7 @@ public class MethodHomework {
 	// 4. 정수형 변수 2개를 파라미터로 받아, 나누기의 결과(실수)를 출력하는 메소드.
 	public static void printDivisionTwoNumber(int num1, int num2) {
 		
-		System.out.println( ( num1 / (double) num2 ) );
+		System.out.println(num1 + " / " + num2 + " = " + ( num1 / (double) num2 ) );
 	}
 	
 	// 5. 정수형 변수 2개를 파라미터로 받아, 나누기의 결과(실수)를 반환하는 메소드.

@@ -146,7 +146,8 @@ public class MethodHomework {
 	public static void printMultiple(int[] array) {
 		
 		for(int i = 0; i < array.length; i++) {
-			if( (i % 2 == 0) || (i % 5 == 0) || (i % 8 == 0) ) {
+			// 8의 배수는 2의 배수이므로 제외
+			if( (i % 2 == 0) || (i % 5 == 0)) {
 				System.out.println(i);
 			}
 		}
@@ -171,8 +172,7 @@ public class MethodHomework {
 	// 12. 정수형 변수 1개를 파라미터로 받아, 4부터 정수형 변수까지의 범위 중 소수(Prime Number)만 출력하는 메소드.
 	public static void printPrime(int num) {
 		
-		for(int i = 4; i <= num; i++) {
-			
+		for(int i = 4; i <= num; i++) {			
 			if(isPrime(i)) {
 				System.out.println(i + " 는 소수입니다.");
 			}
@@ -200,7 +200,7 @@ public class MethodHomework {
 		
 		// index 가 음수이거나 배열 범위를 벗어난 경우
 		if ( (index < 0) || (index >= array.length) ) {
-			return 0;
+			return -1;
 		}
 		
 		return array[index];
@@ -212,7 +212,6 @@ public class MethodHomework {
 		int result = -1;
 		
 		for(int i = 0; i < array.length; i++) {
-			
 			if ( array[i] % 3 == 0 ) {
 				result = array[i];
 				break;
@@ -242,7 +241,6 @@ public class MethodHomework {
 			boolean unique = true;
 			
 			for(int j = 0; j < array2.length; j++) {
-				
 				if(array1[i] == array2[j]) {
 					unique = false;
 					break;

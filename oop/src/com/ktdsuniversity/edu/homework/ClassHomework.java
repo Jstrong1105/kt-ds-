@@ -11,14 +11,14 @@ public class ClassHomework {
 		Consumer[] consumers = new Consumer[consumerCount];
 		for(int i = 0; i < consumerCount; i++) {
 			consumers[i] = new Consumer(getRandom(50000),0); 
-			// 보유 현금이 0 ~ 50000원 , 장바구니가 0인 손님 생성
+			// 보유 현금이 0 ~ 49999원 , 장바구니가 0인 손님 생성
 		}
 		
 		int sellerCount = getRandom(10) + 1; // 1 ~ 10명 판매자 생성
 		Seller[] sellers = new Seller[sellerCount];
 		for(int i = 0; i < sellerCount; i++) {
 			sellers[i] = new Seller(0, (getRandom(4000) + 1000) , (getRandom(5) + 5) );
-			// 매출액 0 , 판매금액 1000 ~ 5000, 재고 5 ~ 10 인 판매자 생성
+			// 매출액 0 , 판매금액 1000 ~ 4999, 재고 5 ~ 9 인 판매자 생성
 		}
 		
 		for(int i = 0; i < consumers.length; i++)

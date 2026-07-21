@@ -7,6 +7,9 @@ import java.util.Objects;
 
 /**
  * Console 창에서 사용자에게 입력을 받음
+ * 
+ * null 입력 -> IllegalStateException : 입력 스트림 종료 -> 프로그램 종료
+ * min > max -> IllegalArgumentException : 개발자의 호출 문제 -> 프로그램 종료
  */
 public class ConsoleInputReader implements InputReader {
 	

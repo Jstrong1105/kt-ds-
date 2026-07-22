@@ -2,19 +2,19 @@ package com.ktdsuniversity.edu.oop.exam;
 
 public class Student {
 	
-	int java;
-	int python;
-	int cpp;
-	int csharp;
+	private int java;
+	private int python;
+	private int cpp;
+	private int csharp;
 	
-	public Student(int java, int python, int cpp, int csharp) {
+	Student(int java, int python, int cpp, int csharp) {
 		this.java = java;
 		this.python = python;
 		this.cpp = cpp;
 		this.csharp = csharp;
 	}
 	
-	public int getSumAllScores(){
+	private int getSumAllScores(){
 		return java + python + cpp + csharp;
 	}
 	

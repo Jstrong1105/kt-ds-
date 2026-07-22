@@ -27,7 +27,7 @@ public class ClassHomework {
 			int seller = getRandom(sellerCount);// 판매할 판매자
 			int count = getRandom(5) + 1; 		// 구매할 개수 1 ~ 5 개  
 			int money = consumers[i].money; 	// 손님이 가진 현금
-			int price = sellers[seller].price; 	// 판매가 판매하는 금액
+			int price = sellers[seller].price; 	// 판매자가 판매하는 금액
 			int total = count * price; 			// 구매할 총 금액
 			int has = sellers[seller].stock; 	// 판매자가 가진 재고
 			

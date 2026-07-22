@@ -4,9 +4,9 @@ public class Car {
 	
 	// 멤버 변수
 	// 클래스의 인스턴스가 독립적으로 가지고 있는 정보들
-	boolean isEngineStart;
-	int speed;
-	int zero100Seconds;
+	public boolean isEngineStart;
+	public int speed;
+	public int zero100Seconds;
 	
 	public Car(int zero100Seconds) {
 		this.zero100Seconds = zero100Seconds;

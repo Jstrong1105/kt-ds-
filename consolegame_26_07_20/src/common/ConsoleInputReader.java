@@ -69,7 +69,7 @@ public class ConsoleInputReader implements InputReader {
 			throw new IllegalArgumentException(errMsg);
 		}
 		
-		String numberPrompt = String.format("%s (%d~%d)", prompt, min, max);
+		String numberPrompt = String.format("%s (%d~%d): ", prompt, min, max);
 		
 		while(true) {
 			int number = readInt(numberPrompt);
@@ -85,7 +85,7 @@ public class ConsoleInputReader implements InputReader {
 
 	@Override
 	public boolean readBoolean(String prompt, String trueAnswer, String falseAnswer) {
-		String boolPrompt = String.format("%s (%s/%s)", prompt, trueAnswer, falseAnswer);
+		String boolPrompt = String.format("%s (%s/%s): ", prompt, trueAnswer, falseAnswer);
 		
 		while(true) {
 			String answer = readString(boolPrompt);

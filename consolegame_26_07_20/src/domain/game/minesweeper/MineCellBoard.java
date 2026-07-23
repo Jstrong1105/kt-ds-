@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 /**
  * 지뢰찾기 보드판 구현 클래스
@@ -37,6 +38,8 @@ class MineCellBoard implements CellBoard {
 	// 첫 입력 판정 변수
 	private boolean first;
 	
+	private int size;
+	
 	// 인자 없는 생성자
 	MineCellBoard(){
 		this(new Random());
@@ -44,8 +47,8 @@ class MineCellBoard implements CellBoard {
 	
 	// 랜덤 시드 주입 생성자
 	MineCellBoard(Random random){
-		board = new ArrayList<>();
-		cellIndex = new HashMap<>();
+		this.board = new ArrayList<>();
+		this.cellIndex = new HashMap<>();
 		this.random = random;
 	}
 	
@@ -57,9 +60,10 @@ class MineCellBoard implements CellBoard {
 		}
 		
 		// 데이터 초기화
-		board.clear();
-		cellIndex.clear();
-		first = true;
+		this.board.clear();
+		this.cellIndex.clear();
+		this.first = true;
+		this.size = size;
 		
 		List<CellPosition> shuffle = new ArrayList<>();
 		
@@ -67,9 +71,9 @@ class MineCellBoard implements CellBoard {
 			for(int col = 0; col < size; col++) {
 				CellPosition pos = new CellPosition(row, col);
 				Cell cell = new Cell(pos);
-				board.add(cell);
+				this.board.add(cell);
 				shuffle.add(pos);
-				cellIndex.put(pos, cell);
+				this.cellIndex.put(pos, cell);
 			}
 		}
 		
@@ -78,9 +82,9 @@ class MineCellBoard implements CellBoard {
 		List<CellPosition> minePosition = shuffle.stream().limit(mineCount).toList();
 		
 		// 지뢰 매설 로직
-		board.stream()
-		     .filter(r -> minePosition.contains(r.getPosition()))
-		     .forEach(Cell::plantMine);
+		this.board.stream()
+				  .filter(r -> minePosition.contains(r.getPosition()))
+				  .forEach(Cell::plantMine);
 	}
 	
 	/**
@@ -115,7 +119,7 @@ class MineCellBoard implements CellBoard {
 	 * @return Optional<Cell>
 	 */
 	private Optional<Cell> getCell(CellPosition position) {
-		return Optional.ofNullable(cellIndex.get(position));
+		return Optional.ofNullable(this.cellIndex.get(position));
 	}
 	
 	/**
@@ -125,27 +129,27 @@ class MineCellBoard implements CellBoard {
 	 * @return 해당 위치의 셀
 	 */
 	private Cell getCellOrThrow(CellPosition position) {
-		return getCell(position).orElseThrow(() -> new IllegalArgumentException(NOT_EXIST_POSITION));
+		return this.getCell(position).orElseThrow(() -> new IllegalArgumentException(NOT_EXIST_POSITION));
 	}
 
 	@Override
 	public boolean isOpen(CellPosition position) {
-		return getCellOrThrow(position).isOpen();
+		return this.getCellOrThrow(position).isOpen();
 	}
 
 	@Override
 	public boolean isFlag(CellPosition position) {
-		return getCellOrThrow(position).isFlag();
+		return this.getCellOrThrow(position).isFlag();
 	}
 	
 	@Override
 	public OpenResult openCell(CellPosition position) {
-		Cell cell = getCellOrThrow(position);
+		Cell cell = this.getCellOrThrow(position);
 		
 		// 첫 입력인 경우 실행하는 영역
 		// 해당 칸이 지뢰인 경우 다른 곳으로 지뢰를 옮긴다.
-		if(first && !cell.isFlag()) {
-			firstOpen(position);
+		if(this.first && !cell.isFlag()) {
+			this.firstOpen(position);
 		}
 		
 		OpenResult result = cell.openCell();
@@ -155,7 +159,7 @@ class MineCellBoard implements CellBoard {
 		
 		// 오픈한 셀의 인접 지뢰가 0 인 경우 실행하는 영역
 		if(cell.getAdjacentMines() == 0) {
-			adjacentOpen(position);
+			this.adjacentOpen(position);
 		}
 		
 		return result;
@@ -169,25 +173,25 @@ class MineCellBoard implements CellBoard {
 	 */
 	private void firstOpen(CellPosition position) {
 		// 처음 오픈한 셀
-		Cell cell = getCellOrThrow(position);
+		Cell cell = this.getCellOrThrow(position);
 		
 		if(cell.isMine()) {
-			List<Cell> notMines = board.stream()
-									   .filter(c -> !c.isMine())
-									   .toList();
+			List<Cell> notMines = this.board.stream()
+											.filter(c -> !c.isMine())
+											.toList();
 			
-			Cell newCell = notMines.get(random.nextInt(notMines.size()));
+			Cell newCell = notMines.get(this.random.nextInt(notMines.size()));
 			
 			cell.removeMine();
 			newCell.plantMine();
 		}
 		
-		first = false;
+		this.first = false;
 		
 		// 인접 지뢰 증가 로직
-		board.stream()
-			 .filter(Cell::isMine)
-			 .forEach(r -> incrementAdjacentMines(r.getPosition()));
+		this.board.stream()
+				  .filter(Cell::isMine)
+				  .forEach(r -> incrementAdjacentMines(r.getPosition()));
 	}
 	
 	/**
@@ -203,24 +207,23 @@ class MineCellBoard implements CellBoard {
 	
 	/**
 	 * 인접한 지뢰가 0인 셀 근처 8칸을 연쇄적으로 오픈하는 메소드
+	 * 
+	 * Deque에 인접 지뢰가 0인 셀들을 넣고 하나씩 빼면서 주변 8칸을 오픈한다.
+	 * 만약 새롭게 오픈한 칸도 인접 지뢰가 0이라면 해당 칸도 Deque에 넣는다.
+	 * 
 	 * @param position 인접 지뢰가 0인 셀
 	 */
 	private void adjacentOpen(CellPosition position) {
 		
-		// 인접한 지뢰가 0인 좌표를 저장할 변수
 		Deque<CellPosition> positions = new ArrayDeque<>();
 		positions.add(position);
 		
 		while(!positions.isEmpty()) {
-			// 저장된 좌표에서 한개 가져옴
 			CellPosition pos = positions.poll();
-			// 가져온 좌표 근처 8칸의 셀들
-			List<Cell> adjacentCells = getAdjacentCells(pos);
+			List<Cell> adjacentCells = this.getAdjacentCells(pos);
 			for(Cell cell : adjacentCells) {
-				// 가져온 셀이 HIDDEN 상태인 경우 오픈함
 				if(cell.isHidden()) {
 					cell.openCell();
-					// 오픈한 셀의 인접 지뢰가 0인 경우 해당 셀의 좌표도 저장함
 					if(cell.getAdjacentMines() == 0) {
 						positions.add(cell.getPosition());
 					}
@@ -231,26 +234,54 @@ class MineCellBoard implements CellBoard {
 
 	@Override
 	public void toggleFlag(CellPosition position) {
-		getCellOrThrow(position).toggleFlag();
+		this.getCellOrThrow(position).toggleFlag();
 	}
 
 	@Override
 	public boolean isClear() {
-		return board.stream()
-					.allMatch(r-> r.isOpen() || r.isMine());
+		return this.board.stream()
+						 .allMatch(r-> r.isOpen() || r.isMine());
 	}
 
 	@Override
 	public int flagCount() {
-		return (int) board.stream()
-						  .filter(Cell::isFlag)
-						  .count();
+		return (int) this.board.stream()
+							   .filter(Cell::isFlag)
+							   .count();
 	}
 
 	@Override
-	public List<CellView> getBoard() {
-		return board.stream()
-					.map(Cell::toView)
-					.toList();
+	public int getSize() {
+		return this.size;
+	}
+	
+	@Override
+	public Map<CellPosition, CellView> getBoard() {
+		return this.board.stream()
+						 .collect(Collectors.toMap(Cell::getPosition, Cell::toView));
+	}
+	
+	@Override
+	public void openMine() {
+		this.board.stream()
+				  .filter(Cell::isMine)
+				  .forEach(Cell::isRevealed);
+	}
+	
+	/**
+	 * 테스트에 사용할 인접 지뢰 반환 메소드
+	 */
+	int getAdjacentMines(CellPosition position) {
+		return this.getCellOrThrow(position).getAdjacentMines();
+	}
+	
+	/**
+	 * 테스트에 사용할 지뢰 위치 반환 메소드
+	 */
+	List<CellPosition> getMinePositions() {
+		return this.board.stream()
+						 .filter(Cell::isMine)
+						 .map(Cell::getPosition)
+						 .toList();
 	}
 }

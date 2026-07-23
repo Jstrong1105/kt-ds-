@@ -92,6 +92,6 @@ class Cell {
 	}
 	
 	CellView toView() {
-		return new CellView(status,position,adjacentMines);
+		return new CellView(status,adjacentMines);
 	}
 }

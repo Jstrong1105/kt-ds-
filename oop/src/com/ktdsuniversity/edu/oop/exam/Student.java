@@ -7,6 +7,10 @@ public class Student {
 	private int cpp;
 	private int csharp;
 	
+	Student() {
+		this(100, 100, 100, 100);
+	}
+	
 	Student(int java, int python, int cpp, int csharp) {
 		this.java = java;
 		this.python = python;

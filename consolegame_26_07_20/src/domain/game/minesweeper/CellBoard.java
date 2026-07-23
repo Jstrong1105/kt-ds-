@@ -1,6 +1,6 @@
 package domain.game.minesweeper;
 
-import java.util.List;
+import java.util.Map;
 
 /**
  * 지뢰찾기 보드판 
@@ -61,8 +61,19 @@ interface CellBoard {
 	int flagCount();
 	
 	/**
+	 * 게임이 종료되어서 모든 지뢰를 공개하는 메소드
+	 */
+	void openMine();
+	
+	/**
+	 * 보드판의 사이즈를 반환하는 메소드
+	 * @return 보드판의 사이즈
+	 */
+	int getSize();
+	
+	/**
 	 * 셀의 정보를 불변 뷰에 담아 반환하는 메소드
 	 * @return 셀의 정보들
 	 */
-	List<CellView> getBoard();
+	Map<CellPosition, CellView> getBoard();
 }

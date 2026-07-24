@@ -5,6 +5,9 @@ package common;
  */
 public final class ConsoleAnsi {
 
+	private ConsoleAnsi() {
+	}
+	
 	public static final String RESET = "\u001B[0m";
 	
 	public static final String TXT_RED = "\u001B[91m";
@@ -12,4 +15,6 @@ public final class ConsoleAnsi {
 	public static final String TXT_BLUE = "\u001B[94m";
 
 	public static final String BG_YELLOW_TXT_GREEN = "\u001B[103;92m";
+	
+	public static final String SCREEN_CLEAR = "\u001B[H\u001B[2J\u001B[3J"; 
 }

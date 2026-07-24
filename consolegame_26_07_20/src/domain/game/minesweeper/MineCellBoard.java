@@ -146,7 +146,7 @@ class MineCellBoard implements CellBoard {
 	public OpenResult openCell(CellPosition position) {
 		Cell cell = this.getCellOrThrow(position);
 		
-		// 첫 입력인 경우 실행하는 영역
+		// 첫 오픈인 경우 실행하는 영역
 		// 해당 칸이 지뢰인 경우 다른 곳으로 지뢰를 옮긴다.
 		if(this.first && !cell.isFlag()) {
 			this.firstOpen(position);
@@ -240,7 +240,7 @@ class MineCellBoard implements CellBoard {
 	@Override
 	public boolean isClear() {
 		return this.board.stream()
-						 .allMatch(r-> r.isOpen() || r.isMine());
+						 .allMatch(r -> r.isOpen() || r.isMine());
 	}
 
 	@Override
@@ -265,7 +265,7 @@ class MineCellBoard implements CellBoard {
 	public void openMine() {
 		this.board.stream()
 				  .filter(Cell::isMine)
-				  .forEach(Cell::isRevealed);
+				  .forEach(Cell::reveal);
 	}
 	
 	/**

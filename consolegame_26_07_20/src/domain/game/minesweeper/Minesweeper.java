@@ -1,5 +1,9 @@
 package domain.game.minesweeper;
 
+import java.time.Duration;
+import java.time.Instant;
+
+import common.ConsoleAnsi;
 import common.InputReader;
 import common.OutputWriter;
 import domain.GameApp;
@@ -11,19 +15,22 @@ import domain.GameApp;
  */
 class Minesweeper implements GameApp {
 	
-	private static final String GAME_PROMPT = "지뢰찾기 게임입니다.";
-	private static final String SIZE_INPUT = "사이즈를 입력하세요.";
-	private static final String MINE_INPUT = "지뢰 비율을 입력하세요.";
-	private static final String ROW_INPUT = "행을 입력하세요.";
-	private static final String COL_INPUT = "열을 입력하세요.";
-	private static final String NOT_VALID_POSITION = "이미 오픈된 셀입니다.";
-	private static final String ACTION_PROMPT = "1.오픈\n2.깃발\n3.취소";
-	private static final String FLAG_OPEN = "깃발은 열 수 없습니다.";
-	private static final String SUCCESS_PROMPT = "승리";
-	private static final String FAIL_PROMPT = "실패";
-	private static final String RESTART_PROMPT = "다시 시작하시겠습니까?";
-	private static final String RESTART_TRUE = "Y";
-	private static final String RESTART_FALSE = "N";
+	// 테스트를 위한 패키지 프라이빗
+	static final String GAME_PROMPT = "지뢰찾기 게임입니다.";
+	static final String SIZE_INPUT = "사이즈를 입력하세요.";
+	static final String MINE_INPUT = "지뢰 비율을 입력하세요.";
+	static final String ROW_INPUT = "행을 입력하세요.";
+	static final String COL_INPUT = "열을 입력하세요.";
+	static final String NOT_VALID_POSITION = "이미 오픈된 셀입니다.";
+	static final String MINE_COUNT = "지뢰 수 %d";
+	static final String FLAG_COUNT = "현재 깃발 수 %d";
+	static final String ACTION_PROMPT = "1.오픈\n2.깃발\n3.취소";
+	static final String FLAG_OPEN = "깃발은 열 수 없습니다.";
+	static final String SUCCESS_PROMPT = "클리어 타임: %d초";
+	static final String FAIL_PROMPT = "실패";
+	static final String RESTART_PROMPT = "다시 시작하시겠습니까?";
+	static final String RESTART_TRUE = "Y";
+	static final String RESTART_FALSE = "N";
 	
 	private static final int MIN_SIZE = 10;
 	private static final int MAX_SIZE = 20;
@@ -35,9 +42,12 @@ class Minesweeper implements GameApp {
 	private final CellBoard board;
 	private final CellPrinter printer;
 	
+	private Instant startTime;
+	
 	private boolean run; 
 	private int size;
 	private int minePercent;
+	private int mineCount;
 	private CellPosition choice;
 	
 	Minesweeper(InputReader reader, OutputWriter writer, CellBoard board, CellPrinter printer){
@@ -66,10 +76,13 @@ class Minesweeper implements GameApp {
 	 * 게임 초기화 로직
 	 */
 	private void init() {
+		this.writer.println(ConsoleAnsi.SCREEN_CLEAR);
 		this.writer.println(GAME_PROMPT);
 		this.size = this.reader.readIntRange(SIZE_INPUT, MIN_SIZE, MAX_SIZE);
 		this.minePercent = this.reader.readIntRange(MINE_INPUT, MIN_MINE_PERCENT, MAX_MINE_PERCENT);
-		this.board.reset(this.size, (this.size * this.size * this.minePercent / 100) );
+		this.mineCount = this.size * this.size * this.minePercent / 100;
+		this.board.reset(this.size, this.mineCount);
+		this.startTime = Instant.now(); 
 	}
 	
 	private void startGame() {
@@ -81,7 +94,10 @@ class Minesweeper implements GameApp {
 	}
 	
 	private void render() {
+		this.writer.println(ConsoleAnsi.SCREEN_CLEAR);
 		this.printer.printCell(this.board.getBoard(), this.size, this.choice);
+		this.writer.println(FLAG_COUNT.formatted(this.board.flagCount()));
+		this.writer.println(MINE_COUNT.formatted(this.mineCount));
 	}
 	
 	private void selectCell() {
@@ -136,10 +152,12 @@ class Minesweeper implements GameApp {
 	}
 	
 	private void finish() {
+		this.writer.println(ConsoleAnsi.SCREEN_CLEAR);
 		this.board.openMine();
 		this.printer.printCell(this.board.getBoard(), this.size, null);
+		this.writer.println("");
 		if(this.board.isClear()) {
-			this.writer.println(SUCCESS_PROMPT);
+			this.writer.println(SUCCESS_PROMPT.formatted(Duration.between(startTime, Instant.now()).getSeconds()));
 		} else {
 			this.writer.println(FAIL_PROMPT);
 		}

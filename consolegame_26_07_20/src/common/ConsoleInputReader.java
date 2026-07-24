@@ -69,7 +69,7 @@ public class ConsoleInputReader implements InputReader {
 			throw new IllegalArgumentException(errMsg);
 		}
 		
-		String numberPrompt = String.format("%s (%d~%d): ", prompt, min, max);
+		String numberPrompt = String.format("%s (%d ~ %d) : ", prompt, min, max);
 		
 		while(true) {
 			int number = readInt(numberPrompt);

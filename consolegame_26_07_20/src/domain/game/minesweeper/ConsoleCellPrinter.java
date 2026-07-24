@@ -18,7 +18,7 @@ class ConsoleCellPrinter implements CellPrinter {
 	
 	static final String HIDDEN_SYMBOL = "■";
 	static final String FLAG_SYMBOL = "P";
-	static final String MINE_SYMBOL = "※";
+	static final String MINE_SYMBOL = ConsoleAnsi.TXT_RED + "※" + ConsoleAnsi.RESET;
 	static final String[] OPEN_SYMBOL = 
 								{"□"
 								,ConsoleAnsi.TXT_GREEN + "①" + ConsoleAnsi.RESET
@@ -42,7 +42,27 @@ class ConsoleCellPrinter implements CellPrinter {
 		
 		StringBuilder sb = new StringBuilder();
 		
+		sb.append("==".repeat(size)).append(" 지뢰찾기 ").append("==".repeat(size)).append("\n");
+		sb.append("====".repeat(size)).append("==========").append("\n");
+		sb.append("    ");
+		
+		sb.append(" ".repeat(size/2));
+		
+		for(int row = 1; row <= size; row++) {
+			sb.append("%2d ".formatted(row));
+		}
+		sb.append("\n");
+		sb.append(" ".repeat(size/2));
+		sb.append("   ┌");
+		sb.append("───".repeat(size));
+		sb.append("┐");
+		sb.append("\n");
+		
 		for(int row = 0; row < size; row++) {
+			
+			sb.append(" ".repeat(size/2));
+			sb.append( ("%2d │").formatted(row+1));
+			
 			for(int col = 0; col < size; col++) {
 				CellPosition position = new CellPosition(row, col);
 				CellView cell = cells.get(position);
@@ -60,8 +80,25 @@ class ConsoleCellPrinter implements CellPrinter {
 					sb.append(ConsoleAnsi.RESET);
 				}
 			}
+			
+			sb.append( ("│ %2d").formatted(row+1));
+			
 			sb.append("\n");
 		}
+		
+		sb.append(" ".repeat(size/2));
+		sb.append("   └");
+		sb.append("───".repeat(size));
+		sb.append("┘");
+		sb.append("\n");
+		sb.append(" ".repeat(size/2));
+		sb.append("    ");
+		
+		for(int row = 1; row <= size; row++) {
+			sb.append("%2d ".formatted(row));
+		}
+		
+		sb.append("\n");
 		
 		this.writer.print(sb.toString());
 	}

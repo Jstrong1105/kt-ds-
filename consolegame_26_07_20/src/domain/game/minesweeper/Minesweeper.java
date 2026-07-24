@@ -102,12 +102,9 @@ class Minesweeper implements GameApp {
 	
 	private void selectCell() {
 		
-		int row;
-		int col;
-		
 		do {
-			row = this.reader.readIntRange(ROW_INPUT, 1, size) -1;
-			col = this.reader.readIntRange(COL_INPUT, 1, size) -1;
+			int row = this.reader.readIntRange(ROW_INPUT, 1, size) -1;
+			int col = this.reader.readIntRange(COL_INPUT, 1, size) -1;
 			this.choice = new CellPosition(row, col);
 			
 			if(this.board.isOpen(this.choice)) {
@@ -118,13 +115,11 @@ class Minesweeper implements GameApp {
 	
 	private void action() {
 		int action = this.reader.readIntRange(ACTION_PROMPT, 1, 3);
-		if(action == 1) {
-			this.openCell();
-		} else if(action == 2) {
-			this.toggleFlag();
-		} else if(action == 3) {
-			this.cancelCell();
-		}
+		switch(action) {
+			case 1 -> this.openCell();
+			case 2 -> this.toggleFlag();
+			case 3 -> this.cancelCell();
+		};
 	}
 	
 	private void openCell() {

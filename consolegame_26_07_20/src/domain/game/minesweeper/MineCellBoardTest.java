@@ -57,7 +57,6 @@ class MineCellBoardTest {
 	 * size 10 , 지뢰 수 30 일때 1105 시드 사용 시 firstOpen 으로 바뀌는 지뢰의 위치
 	 * CellPosition[row=5, col=1]
 	 */
-		
 	
 	MineCellBoard board;
 	

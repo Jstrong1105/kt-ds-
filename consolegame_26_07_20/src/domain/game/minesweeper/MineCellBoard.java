@@ -79,12 +79,10 @@ class MineCellBoard implements CellBoard {
 		
 		Collections.shuffle(shuffle, random);
 		
-		List<CellPosition> minePosition = shuffle.stream().limit(mineCount).toList();
-		
 		// 지뢰 매설 로직
-		this.board.stream()
-				  .filter(r -> minePosition.contains(r.getPosition()))
-				  .forEach(Cell::plantMine);
+		shuffle.stream()
+			   .limit(mineCount)
+			   .forEach(r -> cellIndex.get(r).plantMine());;
 	}
 	
 	/**
@@ -101,12 +99,11 @@ class MineCellBoard implements CellBoard {
 			int col = position.col() + d[1];
 			
 			// 범위 자체가 유효하지 않은 경우
-			if(row < 0 || col < 0) {
+			if(row < 0 || col < 0 || row >= size || col >= size) {
 				continue;
 			}
 			
-			// 해당 범위에 Cell 이 존재하지 않는 경우 추가하지 않음
-			getCell(new CellPosition(row, col)).ifPresent(result::add);
+			result.add(getCellOrThrow(new CellPosition(row,col)));
 		}
 		
 		return result;

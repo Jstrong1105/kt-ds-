@@ -1,9 +1,9 @@
 package domain.card;
 
-
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,101 +13,113 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class DefaultCardDeckTest {
-
+	
 	private static final long SEED = 1105L;
-	/*   1105 시드 순서
-		 Card[suit=HEART, rank=FOUR]
-		 Card[suit=CLUB, rank=QUEEN]
-		 Card[suit=DIAMOND, rank=THREE]
-		 Card[suit=SPADE, rank=QUEEN]
-		 Card[suit=DIAMOND, rank=EIGHT]
-		 Card[suit=CLUB, rank=KING]
-		 Card[suit=CLUB, rank=JACK]
-		 Card[suit=CLUB, rank=TWO]
-		 Card[suit=HEART, rank=NINE]
-		 Card[suit=HEART, rank=QUEEN]
-		 Card[suit=HEART, rank=SIX]
-		 Card[suit=CLUB, rank=SIX]
-		 Card[suit=SPADE, rank=KING]
-		 Card[suit=CLUB, rank=FIVE]
-		 Card[suit=HEART, rank=THREE]
-		 Card[suit=SPADE, rank=ACE]
-		 Card[suit=HEART, rank=JACK]
-		 Card[suit=DIAMOND, rank=JACK]
-		 Card[suit=DIAMOND, rank=QUEEN]
-		 Card[suit=DIAMOND, rank=SEVEN]
-		 Card[suit=HEART, rank=SEVEN]
-		 Card[suit=DIAMOND, rank=KING]
-		 Card[suit=CLUB, rank=TEN]
-		 Card[suit=HEART, rank=EIGHT]
-		 Card[suit=DIAMOND, rank=FIVE]
-		 Card[suit=HEART, rank=KING]
-		 Card[suit=CLUB, rank=NINE]
-		 Card[suit=SPADE, rank=TEN]
-		 Card[suit=DIAMOND, rank=SIX]
-		 Card[suit=CLUB, rank=THREE]
-		 Card[suit=SPADE, rank=NINE]
-		 Card[suit=CLUB, rank=SEVEN]
-		 Card[suit=DIAMOND, rank=TWO]
-		 Card[suit=DIAMOND, rank=FOUR]
-		 Card[suit=SPADE, rank=JACK]
-		 Card[suit=CLUB, rank=FOUR]
-		 Card[suit=HEART, rank=FIVE]
-		 Card[suit=SPADE, rank=THREE]
-		 Card[suit=SPADE, rank=EIGHT]
-		 Card[suit=HEART, rank=TWO]
-		 Card[suit=SPADE, rank=TWO]
-		 Card[suit=CLUB, rank=ACE]
-		 Card[suit=CLUB, rank=EIGHT]
-		 Card[suit=SPADE, rank=FOUR]
-		 Card[suit=SPADE, rank=SIX]
-		 Card[suit=DIAMOND, rank=NINE]
-		 Card[suit=SPADE, rank=SEVEN]
-		 Card[suit=DIAMOND, rank=ACE]
-		 Card[suit=DIAMOND, rank=TEN]
-		 Card[suit=SPADE, rank=FIVE]
-		 Card[suit=HEART, rank=TEN]
-		 Card[suit=HEART, rank=ACE]
-	 */
+	/* 1105 시드 시 카드 순서 (뒤에서부터 나누어줌)
+	CardView[card=Card[suit=HEART, rank=FOUR], open=false]
+	CardView[card=Card[suit=HEART, rank=TWO], open=false]
+	CardView[card=Card[suit=SPADE, rank=FIVE], open=false]
+	CardView[card=Card[suit=SPADE, rank=TWO], open=false]
+	CardView[card=Card[suit=CLUB, rank=FIVE], open=false]
+	CardView[card=Card[suit=CLUB, rank=THREE], open=false]
+	CardView[card=Card[suit=SPADE, rank=THREE], open=false]
+	CardView[card=Card[suit=DIAMOND, rank=KING], open=false]
+	CardView[card=Card[suit=HEART, rank=ACE], open=false]
+	CardView[card=Card[suit=HEART, rank=JACK], open=false]
+	CardView[card=Card[suit=CLUB, rank=QUEEN], open=false]
+	CardView[card=Card[suit=CLUB, rank=KING], open=false]
+	CardView[card=Card[suit=HEART, rank=FIVE], open=false]
+	CardView[card=Card[suit=CLUB, rank=SIX], open=false]
+	CardView[card=Card[suit=SPADE, rank=SIX], open=false]
+	CardView[card=Card[suit=SPADE, rank=EIGHT], open=false]
+	CardView[card=Card[suit=DIAMOND, rank=TWO], open=false]
+	CardView[card=Card[suit=CLUB, rank=NINE], open=false]
+	CardView[card=Card[suit=CLUB, rank=JACK], open=false]
+	CardView[card=Card[suit=HEART, rank=THREE], open=false]
+	CardView[card=Card[suit=DIAMOND, rank=TEN], open=false]
+	CardView[card=Card[suit=CLUB, rank=TEN], open=false]
+	CardView[card=Card[suit=SPADE, rank=FOUR], open=false]
+	CardView[card=Card[suit=CLUB, rank=FOUR], open=false]
+	CardView[card=Card[suit=HEART, rank=KING], open=false]
+	CardView[card=Card[suit=DIAMOND, rank=JACK], open=false]
+	CardView[card=Card[suit=CLUB, rank=TWO], open=false]
+	CardView[card=Card[suit=HEART, rank=SEVEN], open=false]
+	CardView[card=Card[suit=HEART, rank=SIX], open=false]
+	CardView[card=Card[suit=HEART, rank=EIGHT], open=false]
+	CardView[card=Card[suit=CLUB, rank=EIGHT], open=false]
+	CardView[card=Card[suit=DIAMOND, rank=ACE], open=false]
+	CardView[card=Card[suit=HEART, rank=NINE], open=false]
+	CardView[card=Card[suit=HEART, rank=TEN], open=false]
+	CardView[card=Card[suit=DIAMOND, rank=SEVEN], open=false]
+	CardView[card=Card[suit=CLUB, rank=SEVEN], open=false]
+	CardView[card=Card[suit=SPADE, rank=TEN], open=false]
+	CardView[card=Card[suit=SPADE, rank=SEVEN], open=false]
+	CardView[card=Card[suit=HEART, rank=QUEEN], open=false]
+	CardView[card=Card[suit=CLUB, rank=ACE], open=false]
+	CardView[card=Card[suit=SPADE, rank=QUEEN], open=false]
+	CardView[card=Card[suit=SPADE, rank=KING], open=false]
+	CardView[card=Card[suit=DIAMOND, rank=THREE], open=false]
+	CardView[card=Card[suit=DIAMOND, rank=QUEEN], open=false]
+	CardView[card=Card[suit=DIAMOND, rank=SIX], open=false]
+	CardView[card=Card[suit=DIAMOND, rank=FOUR], open=false]
+	CardView[card=Card[suit=SPADE, rank=ACE], open=false]
+	CardView[card=Card[suit=DIAMOND, rank=EIGHT], open=false]
+	CardView[card=Card[suit=DIAMOND, rank=FIVE], open=false]
+	CardView[card=Card[suit=DIAMOND, rank=NINE], open=false]
+	CardView[card=Card[suit=SPADE, rank=NINE], open=false]
+	CardView[card=Card[suit=SPADE, rank=JACK], open=false]
+	*/
 	private DefaultCardDeck cardDeck;
 	
 	@BeforeEach
-	void 초기화() {
+	void init() {
 		cardDeck = new DefaultCardDeck(new Random(SEED));
 	}
 	
 	@Test
-	void drawCard_53장뽑기() {
+	void cardDeck_첫번째카드_두번째카드() {
+		PlayCard card = cardDeck.draw();
+		assertEquals(CardSuit.SPADE, card.getCard().suit());
+		assertEquals(CardRank.JACK, card.getCard().rank());
+		card = cardDeck.draw();
+		assertEquals(CardSuit.SPADE, card.getCard().suit());
+		assertTrue(card.getCard().rank() == CardRank.NINE);
+		assertEquals(CardRank.NINE, card.getCard().rank());
+	}
+	
+	@Test
+	void cardDeck_중복여부() {
+		List<PlayCard> cards = new ArrayList<>();
 		
+		for(int i = 0; i < 52; i++) {
+			cards.add(cardDeck.draw());
+		}
+		
+		assertEquals(52L, cards.stream().distinct().count());
+	}
+	
+	@Test
+	void cardDeck_53장_뽑기() {
 		IllegalStateException e = assertThrows(IllegalStateException.class, () -> {
 			for(int i = 0; i < 53; i++) {
 				cardDeck.draw();
 			}
 		});
-		
-		assertEquals(DefaultCardDeck.EMPTY_CARD_DECK, e.getMessage());
+		assertEquals(DefaultCardDeck.EMPTY_DECK, e.getMessage());
 	}
 	
 	@Test
-	void drawCard_50장뽑고_reset이후_50장() {
+	void cardDeck_50장_뽑고_reset_50장_뽑기() {
 		assertDoesNotThrow(() -> {
 			for(int i = 0; i < 50; i++) {
 				cardDeck.draw();
 			}
-			cardDeck.reset();
+		});
+		cardDeck.reset();
+		assertDoesNotThrow(() -> {
 			for(int i = 0; i < 50; i++) {
 				cardDeck.draw();
 			}
 		});
-	}
-	
-	@Test
-	void drawCard_52장뽑고_중복검사() {
-		List<PlayCard> deck = new ArrayList<>();
-		for(int i = 0; i < 52; i++) {
-			deck.add(cardDeck.draw());
-		}
-		
-		assertEquals(52L,deck.stream().map(PlayCard::getCard).distinct().count());
 	}
 }

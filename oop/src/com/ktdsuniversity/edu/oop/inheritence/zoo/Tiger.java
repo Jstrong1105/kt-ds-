@@ -1,22 +1,19 @@
 package com.ktdsuniversity.edu.oop.inheritence.zoo;
 
-public class Tiger {
+/**
+ * 호랑이
+ */
+public class Tiger extends Animal {
 	
-	private String name;
-	private String sex;
-	private int age;
-	private float weight;
-	private String place;
+	public Tiger(String name, int age, String sex, float weight, String type, String birthDate) {
+		super(name, age, sex, weight, type, birthDate);
+	}
 	
 	public void hunt() {
-		
+		System.out.println(super.getName() + "이(가) 사냥합니다.");
 	}
-	
-	public void eat() {
-		
-	}
-	
+
 	public void howl() {
-		
+		System.out.println(super.getName() + "이(가) 울부짖습니다.");
 	}
 }

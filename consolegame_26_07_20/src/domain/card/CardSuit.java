@@ -1,9 +1,11 @@
 package domain.card;
 
 /**
- * 트럼프 카드 모양 목록
+ * 트럼프 카드가 가지는 형태 모음
+ * 표시 모양과 색상 종류를 가지고 있음
  */
 public enum CardSuit {
+	
 	SPADE("♠",CardColor.BLACK)
 	, DIAMOND("◆",CardColor.RED)
 	, HEART("♥",CardColor.RED)
@@ -14,7 +16,7 @@ public enum CardSuit {
 	private final CardColor color;
 	
 	private CardSuit(String symbol, CardColor color) {
-		this.symbol = symbol;
+		this.symbol = symbol; 	
 		this.color = color;
 	}
 	

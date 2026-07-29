@@ -1,23 +1,15 @@
 package com.ktdsuniversity.edu.oop.inheritence.zoo;
 
-public class Penguin {
+/**
+ * 펭귄
+ */
+public class Penguin extends Animal {
 	
-	private String name;
-	private String sex;
-	private int age;
-	private float weight;
-	private float tall;
+	public Penguin(String name, int age, String sex, float weight, String type, String birthDate) {
+		super(name, age, sex, weight, type, birthDate);
+	}
 	
 	public void swim() {
-		System.out.println(this.name + " 수영함");
-	}
-	
-	public void walk() {
-		System.out.println(this.name + " 걷는다.");
-	}
-	
-	public void eat() {
-		System.out.println(this.name + " 먹는다.");
-		this.weight++;
+		System.out.println(super.getName() + "이(가) 수영합니다.");
 	}
 }

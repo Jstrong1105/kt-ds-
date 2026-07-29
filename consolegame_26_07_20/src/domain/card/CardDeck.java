@@ -1,20 +1,25 @@
 package domain.card;
 
 /**
- * 여러 장의 카드를 만들고 나누어 주는 기능을 가진 인터페이스
+ * 카드 덱 인터페이스
+ * 카드 뭉치를 가지고 나누어 주는 기능을 수행
+ * 
+ * 조커가 없는 52장의 카드 조합을 나누어 주는 덱
+ * 
+ * 카드덱을 초기화하는 기능을 제공 
+ * 카드덱 초기화 시 초기화 전에 나누어준 카드와 섞이지 않도록 주의
  */
 public interface CardDeck {
 	
 	/**
-	 * 카드 덱을 초기화하는 메소드
-	 * reset 실행 시 이전에 나누어진 카드도 초기화할 것
+	 * 카드덱 초기화
 	 */
 	void reset();
 	
 	/**
-	 * 카드를 나누어 주는 메소드
-	 * @return 카드
-	 * @throws IllegalStateException 나누어줄 카드가 없는 경우 발생
+	 * 카드 나누어 주기
+	 * @return 카드 한장
+	 * @throws IllegalStateException 카드가 덱에 한장도 없는 경우
 	 */
 	PlayCard draw();
 }

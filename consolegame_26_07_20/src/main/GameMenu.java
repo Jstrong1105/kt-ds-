@@ -5,6 +5,7 @@ import java.util.function.Function;
 import common.GameIO;
 import domain.GameApp;
 import domain.game.minesweeper.MinesweeperFactory;
+import domain.game.pokergamble.PokerGambleFactory;
 
 /**
  * 각각의 게임들 모음
@@ -12,6 +13,7 @@ import domain.game.minesweeper.MinesweeperFactory;
 public enum GameMenu {
 	
 	MINESWEEPER("지뢰찾기","지뢰를 피하세요.", (io) -> new MinesweeperFactory(io).getGame())
+	, POKERGAMBLE("포커겜블","목표 코인을 달성하세요", (io) -> new PokerGambleFactory(io).getGame())
 	;
 	
 	private final String gameName;

@@ -37,8 +37,7 @@ public class Main {
 				
 				// Food 주문
 				if (menuOrder == 0) {
-					if (consumers[i].getFullnesPercent() <= 100)
-					{
+					if (consumers[i].getFullnesPercent() <= 100) {
 						System.out.println( (i+1) + "번 손님 주문");
 						consumers[i].eatFood(res.getFood(order));
 						System.out.println();
@@ -52,10 +51,6 @@ public class Main {
 						consumers[i].eatDrink(res.getDrink(order));
 						System.out.println();
 					}
-				}
-				// 버그
-				else {
-					System.out.println("버그발생");
 				}
 			}
 			
@@ -94,8 +89,7 @@ public class Main {
 		int adult = hasAdult(consumers);
 		
 		for(int i = 0; i < consumers.length; i++) {
-			if(adult == 0)
-			{
+			if(adult == 0) {
 				if(consumers[i].getFullnesPercent() <= 100) {
 					result = false;
 					break;

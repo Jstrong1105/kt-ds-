@@ -59,7 +59,7 @@ public class GameStore {
 		GameIO io = new GameIO(reader, writer);
 		
 		while(true) {
-			writer.print(sb.toString());
+			writer.println(sb.toString());
 			
 			int answer = reader.readIntRange(MENU_ORDER_PROMPT,1,endOrder);
 			

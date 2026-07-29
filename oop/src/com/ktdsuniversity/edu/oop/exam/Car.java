@@ -40,6 +40,11 @@ public class Car {
 		}
 	}
 
+	@Override
+	public String toString() {
+		return String.valueOf(this.zero100Seconds);
+	}
+	
 	// 브레이크 페달을 밟는다.
 	// 페달을 밟는 압력만큼 속도가 감속한다.
 	public void pressBrakePedal(int pressure) {

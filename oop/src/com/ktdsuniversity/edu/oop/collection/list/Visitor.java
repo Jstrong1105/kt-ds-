@@ -1,4 +1,9 @@
-package com.ktdsuniversity.edu.oop.cafe;
+package com.ktdsuniversity.edu.oop.collection.list;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import com.ktdsuniversity.edu.oop.cafe.ComicsBook;
 
 /**
  * 만화 카페에 대여하러온 사람 
@@ -9,12 +14,12 @@ public class Visitor {
 	private int money;
 	
 	/** 빌린 책 */
-	private ComicsBook[] books;
+	private List<ComicsBook> books;
 	
 	// 생성자
 	public Visitor(int money){
 		this.money = money;
-		books = new ComicsBook[10];
+		books = new ArrayList<>();
 	}
 	
 	// 가진 돈 알려주기

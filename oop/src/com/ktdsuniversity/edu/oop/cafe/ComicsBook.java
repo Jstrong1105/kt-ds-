@@ -3,7 +3,7 @@ package com.ktdsuniversity.edu.oop.cafe;
 /**
  * 만화책 클래스
  */
-class ComicsBook {
+public class ComicsBook {
 	
 	/** 책 이름*/
 	private String bookName;
@@ -15,32 +15,32 @@ class ComicsBook {
 	private int price;
 	
 	// 생성자
-	ComicsBook(String bookName, boolean rental, int price){
+	public ComicsBook(String bookName, boolean rental, int price){
 		this.bookName = bookName;
 		this.rental = rental;
 		this.price = price;
 	}
 	
 	// 대여하기
-	void rentalBook() {
+	public void rentalBook() {
 		rental = true;
 	}
 	
 	// 반납하기
-	void returnBook() {
+	public void returnBook() {
 		rental = false;
 	}
 	
 	// getter
-	String getBookName() {
+	public String getBookName() {
 		return this.bookName;
 	}
 	
-	boolean isRental() {
+	public boolean isRental() {
 		return this.rental;
 	}
 	
-	int getPrice() {
+	public int getPrice() {
 		return this.price;
 	}
 }

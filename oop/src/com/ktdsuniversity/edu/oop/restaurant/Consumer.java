@@ -3,9 +3,8 @@ package com.ktdsuniversity.edu.oop.restaurant;
 /**
  * 레스토랑의 손님
  * 
- * 레스토랑 패키지 내부에서만 사용할 예정이기에 패키지 프라이빗으로 구성 
  */
-class Consumer {
+public class Consumer {
 	
 	/** 손님의 나이 */
 	private int age;
@@ -23,20 +22,20 @@ class Consumer {
 	private int drunkPercent;
 	
 	// 생성자 구성
-	Consumer(int age){
+	public Consumer(int age){
 		this.age = age;
 		this.fullnessPercent = 0;
 		this.drunkPercent = 0;
 	}
 	
-	void printStatus() {
+	public void printStatus() {
 		System.out.println("나이: " + age);
 		System.out.println("포만도: " + fullnessPercent);
 		System.out.println("취기: " + drunkPercent);
 	}
 	
 	// 음식 먹기
-	void eatFood(Food food) {
+	public void eatFood(Food food) {
 		if(this.fullnessPercent > 100) {
 			System.out.println("더 이상 먹을 수 없습니다.");
 		} else {
@@ -45,7 +44,7 @@ class Consumer {
 	}
 	
 	// 주류 먹기
-	void eatDrink(Drink drink) {
+	public void eatDrink(Drink drink) {
 		if(this.drunkPercent > 60) {
 			System.out.println("더 이상 마실 수 없습니다.");
 		} else {
@@ -53,7 +52,7 @@ class Consumer {
 		}
 	}
 	
-	private void eatPrint(String category, int fullnessPercent, int drunkPercent) {
+	public void eatPrint(String category, int fullnessPercent, int drunkPercent) {
 		System.out.println(category + "를 먹었습니다.");
 		this.fullnessPercent += fullnessPercent;
 		if(this.fullnessPercent < 0) {
@@ -68,15 +67,15 @@ class Consumer {
 	}
 	
 	// getter 구성
-	int getAge() {
+	public int getAge() {
 		return this.age;
 	}
 	
-	int getFullnesPercent() {
+	public int getFullnesPercent() {
 		return this.fullnessPercent;
 	}
 	
-	int getDrunkPercent() {
+	public int getDrunkPercent() {
 		return this.drunkPercent;
 	}
 }

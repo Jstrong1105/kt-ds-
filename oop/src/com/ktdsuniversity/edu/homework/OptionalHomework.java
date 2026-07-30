@@ -175,6 +175,7 @@ public class OptionalHomework {
 		StringBuffer sb = new StringBuffer();
 		
 		for(int i = 0; i < length; i++) {
+		//	char c = (char)( (Math.random() * 65536) ) ; 
 			char c = texts[ ( (int) (Math.random() * texts.length) ) ]; 
 			sb.append(c);
 		}

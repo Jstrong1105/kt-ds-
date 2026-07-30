@@ -3,9 +3,8 @@ package com.ktdsuniversity.edu.oop.restaurant;
 /**
  * 레스토랑에서 판매하는 음식
  * 
- * 패키지내에서만 사용할 예정이므로 패키지 프라이빗 구성
  */
-class Food {
+public class Food {
 	
 	/** 음식종류 */
 	private String category;
@@ -17,22 +16,22 @@ class Food {
 	private int drunkPercent;
 	
 	// 생성자 구성
-	Food(String category, int fullnessPercent, int drunkPercent){
+	public Food(String category, int fullnessPercent, int drunkPercent){
 		this.category = category;
 		this.fullnessPercent = fullnessPercent;
 		this.drunkPercent = drunkPercent;
 	}
 	
 	// getter 구성
-	String getCategory() {
+	public String getCategory() {
 		return this.category;
 	}
 	
-	int getFullnessPercent() {
+	public int getFullnessPercent() {
 		return this.fullnessPercent;
 	}
 	
-	int getDrunkPercent() {
+	public int getDrunkPercent() {
 		return this.drunkPercent;
 	}
 }

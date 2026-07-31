@@ -37,6 +37,7 @@ public class Article {
 	
 	// 정보 출력하기
 	public void printStatus() {
+		System.out.println();
 		System.out.println("게시글 제목: " + this.title);
 		System.out.println("게시글 작성자: " + this.WRITER);
 		System.out.println("게시글 작성 날짜: " + this.WRITE_DATE);
@@ -47,9 +48,16 @@ public class Article {
 			System.out.println("등록된 댓글이 없습니다.");
 		} else {
 			for (Comment comment : this.COMMENT_LIST) {
+				System.out.println();
 				comment.printStatus();
 			}
 		}
+		System.out.println();
+	}
+	
+	// 조회수 증가하기
+	public void incrementHitCount() {
+		this.hitCount++;
 	}
 	
 	// 제목 수정하기
@@ -64,7 +72,7 @@ public class Article {
 	
 	// 댓글 여부 반환하기
 	public boolean existComment(int index) {
-		return index < 0 || this.COMMENT_LIST.size() >= index;
+		return index >= 0 && this.COMMENT_LIST.size() > index;
 	}
 	
 	// 댓글 추가하기
@@ -79,9 +87,6 @@ public class Article {
 	
 	// 댓글 하나 지우기
 	public void commentDeleteAt(int index) {
-		if (index < 0 || this.COMMENT_LIST.size() >= index) {
-			return;
-		}
 		this.COMMENT_LIST.remove(index);
 	}
 	

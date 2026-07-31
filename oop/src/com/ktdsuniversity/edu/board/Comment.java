@@ -50,4 +50,13 @@ public class Comment {
 	public int getGood() {
 		return this.good;
 	}
+	
+	public String toSaveString() {
+		StringBuffer buffer = new StringBuffer();
+		buffer.append(this.CONTENT).append(",");
+		buffer.append(this.WRITER).append(",");
+		buffer.append(this.WRITE_DATE).append(",");
+		buffer.append(this.good);
+		return buffer.toString();
+	}
 }

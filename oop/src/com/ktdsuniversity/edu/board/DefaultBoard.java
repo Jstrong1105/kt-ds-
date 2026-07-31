@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import com.ktdsuniversity.edu.board.io.FileIo;
+
 /**
  * Board 인터페이스를 구현한 클래스
  */
@@ -17,9 +19,13 @@ public class DefaultBoard implements Board {
 	
 	private Scanner reader;
 	
-	public DefaultBoard(Scanner reader) {
+	private final FileIo io;
+	
+	public DefaultBoard(Scanner reader, FileIo io) {
 		this.reader = reader;
 		this.board = new ArrayList<>();
+		this.io = io;
+		loadData();
 	}
 
 	private String readString(String prompt) {
@@ -35,6 +41,15 @@ public class DefaultBoard implements Board {
 				System.out.println("숫자만 입력하세요.");
 			}
 		}
+	}
+	
+	private void loadData() {
+		this.board = this.io.loadData();
+	}
+
+	@Override
+	public void saveData() {
+		this.io.saveData(board);
 	}
 	
 	@Override

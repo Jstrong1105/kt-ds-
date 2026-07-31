@@ -3,6 +3,8 @@ package com.ktdsuniversity.edu.board;
 import java.util.List;
 import java.util.Scanner;
 
+import com.ktdsuniversity.edu.board.io.DefaultFileIo;
+
 /**
  * 프로그램 시작점
  */
@@ -14,7 +16,7 @@ public class Main {
 		
 		int answer = 0;
 		
-		Board board = new DefaultBoard(reader);
+		Board board = new DefaultBoard(reader, new DefaultFileIo());
 		
 		List<Runnable> action = List.of(
 			board::writeArticle,
@@ -53,6 +55,8 @@ public class Main {
 			answer = readInt("번호를 선택하세요: ");
 			
 			if (answer == action.size()+1) {
+				board.saveData();
+				System.out.println("저장이 완료되었습니다.");
 				break;
 			} else if (answer >= 1 && answer <= action.size()) {
 				action.get(answer-1).run();

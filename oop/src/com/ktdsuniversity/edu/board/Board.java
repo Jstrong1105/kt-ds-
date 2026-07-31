@@ -40,4 +40,7 @@ public interface Board {
 	
 	// 원하는 게시글의 모든 댓글 삭제하기
 	void deleteAllCommentByArticle();
+	
+	// 데이터 저장하기
+	void saveData();
 }

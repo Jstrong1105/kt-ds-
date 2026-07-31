@@ -26,14 +26,20 @@ public class Article {
 	/** 댓글 목록 */
 	private final List<Comment> COMMENT_LIST;
 	
+
 	public Article(String title, String writer, String writeDate, String content) {
+		this(title,writer,writeDate,0,content);
+	}
+	
+	public Article(String title, String writer, String writeDate, int hitCount, String content) {
 		this.title = title;
 		this.WRITER = writer;
 		this.WRITE_DATE = writeDate;
-		this.hitCount = 0; // 명시적 초기화
+		this.hitCount = hitCount;
 		this.content = content;
 		this.COMMENT_LIST = new ArrayList<>();
 	}
+	
 	
 	// 정보 출력하기
 	public void printStatus() {
@@ -118,5 +124,24 @@ public class Article {
 	
 	public String getContent() {
 		return this.content;
+	}
+	
+	public String toSaveString() {
+		StringBuffer buffer = new StringBuffer();
+		
+		buffer.append(this.title).append(",");
+		buffer.append(this.WRITER).append(",");
+		buffer.append(this.WRITE_DATE).append(",");
+		buffer.append(this.hitCount).append(",");
+		buffer.append(this.content);
+		
+		if (!this.COMMENT_LIST.isEmpty()) {
+			for (Comment c : this.COMMENT_LIST) {
+				buffer.append("@");
+				buffer.append(c.toSaveString());
+			}
+		}
+		
+		return buffer.toString();
 	}
 }

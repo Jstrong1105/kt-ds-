@@ -1,7 +1,5 @@
 package com.ktdsuniversity.edu.board;
 
-import java.util.Scanner;
-
 import com.ktdsuniversity.edu.board.io.DefaultFileIo;
 import com.ktdsuniversity.edu.board.service.Board;
 import com.ktdsuniversity.edu.board.service.BoardAction;

@@ -1,9 +1,11 @@
-package com.ktdsuniversity.edu.board;
+package com.ktdsuniversity.edu.board.service;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import com.ktdsuniversity.edu.board.data.Article;
+import com.ktdsuniversity.edu.board.data.Comment;
 import com.ktdsuniversity.edu.board.exception.ArticleException;
 import com.ktdsuniversity.edu.board.exception.ArticleWriterException;
 import com.ktdsuniversity.edu.board.io.FileIO;

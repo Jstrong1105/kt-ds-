@@ -6,8 +6,8 @@ import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.ktdsuniversity.edu.board.Article;
-import com.ktdsuniversity.edu.board.Comment;
+import com.ktdsuniversity.edu.board.data.Article;
+import com.ktdsuniversity.edu.board.data.Comment;
 
 /**
  * FileIo 인터페이스를 구현한 클래스

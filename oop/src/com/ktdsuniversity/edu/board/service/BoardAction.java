@@ -1,4 +1,4 @@
-package com.ktdsuniversity.edu.board;
+package com.ktdsuniversity.edu.board.service;
 
 import java.util.function.Consumer;
 

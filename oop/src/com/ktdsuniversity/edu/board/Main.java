@@ -3,6 +3,9 @@ package com.ktdsuniversity.edu.board;
 import java.util.Scanner;
 
 import com.ktdsuniversity.edu.board.io.DefaultFileIo;
+import com.ktdsuniversity.edu.board.service.Board;
+import com.ktdsuniversity.edu.board.service.BoardAction;
+import com.ktdsuniversity.edu.board.service.DefaultBoard;
 
 /**
  * 프로그램 시작점

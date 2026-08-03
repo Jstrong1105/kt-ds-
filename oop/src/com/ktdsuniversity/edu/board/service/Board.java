@@ -1,4 +1,4 @@
-package com.ktdsuniversity.edu.board;
+package com.ktdsuniversity.edu.board.service;
 
 /**
  * 게시판이 수행하는 기능을 정의한 인터페이스

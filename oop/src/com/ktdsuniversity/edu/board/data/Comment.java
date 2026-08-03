@@ -1,4 +1,4 @@
-package com.ktdsuniversity.edu.board;
+package com.ktdsuniversity.edu.board.data;
 
 /**
  * 댓글 1개

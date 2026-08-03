@@ -2,13 +2,13 @@ package com.ktdsuniversity.edu.board.service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 import com.ktdsuniversity.edu.board.data.Article;
 import com.ktdsuniversity.edu.board.data.Comment;
 import com.ktdsuniversity.edu.board.exception.ArticleException;
 import com.ktdsuniversity.edu.board.exception.ArticleWriterException;
 import com.ktdsuniversity.edu.board.io.FileIO;
+import com.ktdsuniversity.edu.board.util.Reader;
 
 /**
  * Board 인터페이스를 구현한 클래스
@@ -21,32 +21,14 @@ public class DefaultBoard implements Board {
 	
 	private List<Article> board;
 	
-	private Scanner reader;
-	
 	private final FileIO io;
 	
-	public DefaultBoard(Scanner reader, FileIO io) {
-		this.reader = reader;
+	public DefaultBoard(FileIO io) {
 		this.board = new ArrayList<>();
 		this.io = io;
 		loadData();
 	}
 
-	private String readString(String prompt) {
-		System.out.print(prompt);
-		return this.reader.nextLine().trim();
-	}
-	
-	private int readInt(String prompt) {
-		while (true) {
-			try {
-				return Integer.parseInt(readString(prompt));
-			} catch (NumberFormatException e) {
-				System.out.println("숫자만 입력하세요.");
-			}
-		}
-	}
-	
 	private void loadData() {
 		this.board = this.io.loadData();
 	}
@@ -62,18 +44,18 @@ public class DefaultBoard implements Board {
 		System.out.println();
 		System.out.println("======= 게시글 작성 =======");
 		
-		String title = this.readString("게시글 제목을 입력하세요: ");
+		String title = Reader.readString("게시글 제목을 입력하세요: ");
 		if (title.isBlank() || title.length() > 30) {
 			throw new ArticleException("제목 예외");
 		}
 		
-		String writer = this.readString("게시글 작성자를 입력하세요: ");
+		String writer = Reader.readString("게시글 작성자를 입력하세요: ");
 		if (writer.isBlank()) {
 			throw new ArticleWriterException("작성자 예외");
 		}
 		
-		String writeDate = this.readString("게시글 작성일을 입력하세요: ");
-		String content = this.readString("게시글 내용을 입력하세요: ");
+		String writeDate = Reader.readString("게시글 작성일을 입력하세요: ");
+		String content = Reader.readString("게시글 내용을 입력하세요: ");
 		
 		this.board.add(new Article(title, writer, writeDate, content));
 		
@@ -112,7 +94,7 @@ public class DefaultBoard implements Board {
 		
 		System.out.println("======= 게시글 조회 =======");
 		
-		int index = this.readInt("조회할 게시글 번호를 입력하세요: ");
+		int index = Reader.readInt("조회할 게시글 번호를 입력하세요: ");
 		
 		if (index < 0 || index >= this.board.size()) {
 			System.out.println(NOT_EXIST_ARTICLE_NUMBER);
@@ -136,13 +118,13 @@ public class DefaultBoard implements Board {
 		
 		System.out.println("======= 게시글 수정 =======");
 		
-		int index = this.readInt("수정할 게시글 번호를 입력하세요: ");
+		int index = Reader.readInt("수정할 게시글 번호를 입력하세요: ");
 		
 		if (index < 0 || index >= this.board.size()) {
 			System.out.println(NOT_EXIST_ARTICLE_NUMBER);
 		} else {
-			String title = this.readString("수정할 제목을 입력하세요: ");
-			String content = this.readString("수정할 내용을 입력하세요: ");
+			String title = Reader.readString("수정할 제목을 입력하세요: ");
+			String content = Reader.readString("수정할 내용을 입력하세요: ");
 			this.board.get(index).setTitle(title);
 			this.board.get(index).setContent(content);
 			System.out.println("게시글 수정이 완료되었습니다.");
@@ -162,7 +144,7 @@ public class DefaultBoard implements Board {
 		
 		System.out.println("======= 게시글 삭제 =======");
 		
-		int index = this.readInt("삭제할 게시글 번호를 입력하세요: ");
+		int index = Reader.readInt("삭제할 게시글 번호를 입력하세요: ");
 		
 		if (index < 0 || index >= this.board.size()) {
 			System.out.println(NOT_EXIST_ARTICLE_NUMBER);
@@ -200,7 +182,7 @@ public class DefaultBoard implements Board {
 		
 		System.out.println("======= 댓글 작성 =======");
 		
-		int index = this.readInt("댓글을 작성할 게시글 번호를 입력하세요: ");
+		int index = Reader.readInt("댓글을 작성할 게시글 번호를 입력하세요: ");
 		
 		if (index < 0 || index >= this.board.size()) {
 			System.out.println(NOT_EXIST_ARTICLE_NUMBER);
@@ -208,9 +190,9 @@ public class DefaultBoard implements Board {
 			System.out.println("댓글을 더 이상 등록할 수 없습니다.");
 		} else {
 			
-			String content = this.readString("댓글 내용을 입력하세요: ");
-			String name = this.readString("댓글 작성자 이름을 입력하세요: ");
-			String writeDate = this.readString("댓글 작성일을 입력하세요: ");
+			String content = Reader.readString("댓글 내용을 입력하세요: ");
+			String name = Reader.readString("댓글 작성자 이름을 입력하세요: ");
+			String writeDate = Reader.readString("댓글 작성일을 입력하세요: ");
 			
 			this.board.get(index).addComment(new Comment(content, name, writeDate));
 			
@@ -232,12 +214,12 @@ public class DefaultBoard implements Board {
 		
 		System.out.println("======= 댓글 삭제 =======");
 		
-		int index = this.readInt("댓글을 삭제할 게시글 번호를 입력하세요: ");
+		int index = Reader.readInt("댓글을 삭제할 게시글 번호를 입력하세요: ");
 		
 		if (index < 0 || index >= this.board.size()) {
 			System.out.println(NOT_EXIST_ARTICLE_NUMBER);
 		} else {
-			int commentIndex = this.readInt("삭제할 댓글 번호를 입력하세요: ");
+			int commentIndex = Reader.readInt("삭제할 댓글 번호를 입력하세요: ");
 			
 			if (this.board.get(index).existComment(commentIndex)) {
 				this.board.get(index).commentDeleteAt(commentIndex);
@@ -261,12 +243,12 @@ public class DefaultBoard implements Board {
 		
 		System.out.println("======= 댓글 추천 =======");
 		
-		int index = this.readInt("추천할 댓글이 존재하는 게시글 번호를 입력하세요: ");
+		int index = Reader.readInt("추천할 댓글이 존재하는 게시글 번호를 입력하세요: ");
 		
 		if (index < 0 || index >= this.board.size()) {
 			System.out.println(NOT_EXIST_ARTICLE_NUMBER);
 		} else {
-			int commentIndex = this.readInt("추천할 댓글 번호를 입력하세요: ");
+			int commentIndex = Reader.readInt("추천할 댓글 번호를 입력하세요: ");
 			
 			if (this.board.get(index).existComment(commentIndex)) {
 				this.board.get(index).goodComment(commentIndex);
@@ -291,7 +273,7 @@ public class DefaultBoard implements Board {
 		
 		System.out.println("======= 게시글 검색 =======");
 		
-		String title = readString("검색할 제목을 입력하세요: ");
+		String title = Reader.readString("검색할 제목을 입력하세요: ");
 		
 		for (int i = 0; i < this.board.size(); i++) {
 			Article art = this.board.get(i);
@@ -333,7 +315,7 @@ public class DefaultBoard implements Board {
 		
 		System.out.println("======= 댓글 삭제 =======");
 		
-		int index = this.readInt("댓글을 삭제할 게시글 번호를 입력하세요: ");
+		int index = Reader.readInt("댓글을 삭제할 게시글 번호를 입력하세요: ");
 		
 		if (index < 0 || index >= this.board.size()) {
 			System.out.println(NOT_EXIST_ARTICLE_NUMBER);

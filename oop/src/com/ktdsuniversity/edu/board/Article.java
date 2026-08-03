@@ -26,11 +26,12 @@ public class Article {
 	/** 댓글 목록 */
 	private final List<Comment> COMMENT_LIST;
 	
-
+	// 일반적으로 게시글 작성 시 호출하는 생성자
 	public Article(String title, String writer, String writeDate, String content) {
 		this(title,writer,writeDate,0,content);
 	}
 	
+	// 파일에 저장된 정보를 가져와 게시글 작성 시 호출하는 생성자
 	public Article(String title, String writer, String writeDate, int hitCount, String content) {
 		this.title = title;
 		this.WRITER = writer;

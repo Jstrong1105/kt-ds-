@@ -12,7 +12,7 @@ import com.ktdsuniversity.edu.board.Comment;
 /**
  * FileIo 인터페이스를 구현한 클래스
  */
-public class DefaultFileIo implements FileIo {
+public class DefaultFileIo implements FileIO {
 	
 	private static final String FILE_PATH = "C:/board_data";
 	private static final String FILE_NAME = "board_data.txt";
@@ -55,7 +55,7 @@ public class DefaultFileIo implements FileIo {
 				// 댓글이 없는 게시글
 				else {
 					String[] art = s.split(",");
-					load.add(new Article(art[0], art[1], art[2], art[3]));
+					load.add(new Article(art[0], art[1], art[2], Integer.parseInt(art[3]), art[4]));
 				}
 			}
 		}

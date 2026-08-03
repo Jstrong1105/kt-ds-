@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import com.ktdsuniversity.edu.board.io.FileIo;
+import com.ktdsuniversity.edu.board.exception.ArticleException;
+import com.ktdsuniversity.edu.board.exception.ArticleWriterException;
+import com.ktdsuniversity.edu.board.io.FileIO;
 
 /**
  * Board 인터페이스를 구현한 클래스
@@ -19,9 +21,9 @@ public class DefaultBoard implements Board {
 	
 	private Scanner reader;
 	
-	private final FileIo io;
+	private final FileIO io;
 	
-	public DefaultBoard(Scanner reader, FileIo io) {
+	public DefaultBoard(Scanner reader, FileIO io) {
 		this.reader = reader;
 		this.board = new ArrayList<>();
 		this.io = io;
@@ -84,16 +86,15 @@ public class DefaultBoard implements Board {
 		
 		if (this.board.isEmpty()) {
 			System.out.println(NOT_EXIST_ARTICLE);
-		} else {
+			return;
+		} 
 			
-			System.out.println("======= 게시글 목록 =======");
-			
-			for (int i = 0; i < this.board.size(); i++) {
-				Article art = this.board.get(i);
-				System.out.printf("%d. %s (%d)%n",i, art.getTitle(), art.getCommentCount() );
-			}
-			System.out.println("모든 게시글 출력이 완료되었습니다.");
+		System.out.println("======= 게시글 목록 =======");
+		for (int i = 0; i < this.board.size(); i++) {
+			Article art = this.board.get(i);
+			System.out.printf("%d. %s (%d)%n",i, art.getTitle(), art.getCommentCount() );
 		}
+		System.out.println("모든 게시글 출력이 완료되었습니다.");
 		System.out.println();
 	}
 
@@ -128,6 +129,7 @@ public class DefaultBoard implements Board {
 		
 		if (this.board.isEmpty()) {
 			System.out.println(NOT_EXIST_ARTICLE);
+			return;
 		}
 		
 		System.out.println("======= 게시글 수정 =======");
@@ -153,6 +155,7 @@ public class DefaultBoard implements Board {
 		
 		if (this.board.isEmpty()) {
 			System.out.println(NOT_EXIST_ARTICLE);
+			return;
 		}
 		
 		System.out.println("======= 게시글 삭제 =======");
@@ -175,10 +178,11 @@ public class DefaultBoard implements Board {
 		
 		if (this.board.isEmpty()) {
 			System.out.println(NOT_EXIST_ARTICLE);
-		} else {
-			System.out.println("======= 등록된 게시글 조회 =======");
-			System.out.println(this.board.size() + "개의 게시글이 등록되었습니다.");
+			return;
 		}
+		
+		System.out.println("======= 등록된 게시글 조회 =======");
+		System.out.println(this.board.size() + "개의 게시글이 등록되었습니다.");
 		System.out.println();
 	}
 
@@ -189,6 +193,7 @@ public class DefaultBoard implements Board {
 		
 		if (this.board.isEmpty()) {
 			System.out.println(NOT_EXIST_ARTICLE);
+			return;
 		}
 		
 		System.out.println("======= 댓글 작성 =======");
@@ -220,6 +225,7 @@ public class DefaultBoard implements Board {
 		
 		if (this.board.isEmpty()) {
 			System.out.println(NOT_EXIST_ARTICLE);
+			return;
 		}
 		
 		System.out.println("======= 댓글 삭제 =======");
@@ -248,6 +254,7 @@ public class DefaultBoard implements Board {
 		
 		if (this.board.isEmpty()) {
 			System.out.println(NOT_EXIST_ARTICLE);
+			return;
 		}
 		
 		System.out.println("======= 댓글 추천 =======");
@@ -302,13 +309,13 @@ public class DefaultBoard implements Board {
 		
 		if (this.board.isEmpty()) {
 			System.out.println(NOT_EXIST_ARTICLE);
-		} else {
-			System.out.println("======= 게시글 삭제 =======");
-			int size = this.board.size();
-			this.board.clear();
-			System.out.println(size + "개 게시글을 삭제했습니다.");
+			return;
 		}
 		
+		System.out.println("======= 게시글 삭제 =======");
+		int size = this.board.size();
+		this.board.clear();
+		System.out.println(size + "개 게시글을 삭제했습니다.");
 		System.out.println();
 	}
 
@@ -331,8 +338,9 @@ public class DefaultBoard implements Board {
 		} else if (this.board.get(index).getCommentCount() == 0){
 			System.out.println("등록된 댓글이 없습니다.");
 		} else {
+			int count = this.board.get(index).getCommentCount();
 			this.board.get(index).commentDeleteAll();
-			System.out.println("댓글 삭제가 완료되었습니다.");
+			System.out.println(count + "개 댓글 삭제가 완료되었습니다.");
 		}
 		
 		System.out.println();

@@ -1,4 +1,4 @@
-package com.ktdsuniversity.edu.board;
+package com.ktdsuniversity.edu.board.exception;
 
 /**
  * 게시글 작성자의 이름이 입력되지 않아 던져지는 예외

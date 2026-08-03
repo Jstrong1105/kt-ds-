@@ -1,6 +1,5 @@
 package com.ktdsuniversity.edu.board;
 
-import java.util.List;
 import java.util.Scanner;
 
 import com.ktdsuniversity.edu.board.io.DefaultFileIo;
@@ -15,53 +14,34 @@ public class Main {
 	public static void main(String[] args) {
 		
 		int answer = 0;
-		
 		Board board = new DefaultBoard(reader, new DefaultFileIo());
-		
-		List<Runnable> action = List.of(
-			board::writeArticle,
-			board::printArticle,
-			board::printArticleById,
-			board::modifyArticleById,
-			board::deleteArticleById,
-			board::countArticle,
-			board::writeComment,
-			board::deleteCommentById,
-			board::goodCommentById,
-			board::articleByTitle,
-			board::deleteAllArticle,
-			board::deleteAllCommentByArticle
-		);
+		BoardAction[] actions = BoardAction.values();
 		
 		while (true) {
+			// 메뉴 출력
+			System.out.println("======= 게시판 =======");
+			for(BoardAction action : actions) {
+				System.out.printf("%2d. %s\n", (action.ordinal()+1), action.getPrompt() );
+			}
+			System.out.printf("%2d. 종료\n", (actions.length+1));
 			
-			System.out.println();
-			System.out.println();
-			System.out.println(" ======= 게시판 =======");
-			System.out.println(" 1. 게시글 작성");
-			System.out.println(" 2. 모든 게시글 출력");
-			System.out.println(" 3. 게시글 번호로 게시글 정보 출력");
-			System.out.println(" 4. 게시글 수정");
-			System.out.println(" 5. 게시글 번호로 게시글 삭제");
-			System.out.println(" 6. 게시판에 등록된 게시글의 개수 출력");
-			System.out.println(" 7. 게시판에 댓글 작성하기");
-			System.out.println(" 8. 게시글에 등록된 댓글 삭제");
-			System.out.println(" 9. 게시글에 등록된 댓글 하나 추천하기");
-			System.out.println("10. 게시글 제목으로 검색하기");
-			System.out.println("11. 게시글 목록 전체 삭제하기");
-			System.out.println("12. 원하는 게시글의 모든 댓글 삭제하기");
-			System.out.println("13. 프로그램 종료");
-			
+			// 사용자 입력
 			answer = readInt("번호를 선택하세요: ");
 			
-			if (answer == action.size()+1) {
+			// 종료 기능 실행
+			if (answer == actions.length+1) {
 				board.saveData();
 				System.out.println("저장이 완료되었습니다.");
+				reader.close();
 				break;
-			} else if (answer >= 1 && answer <= action.size()) {
-				action.get(answer-1).run();
+			}
+			// 특정 기능 실행
+			else if (answer >= 1 && answer <= actions.length) {
+				actions[answer-1].action(board);
 				reader.nextLine();
-			} else {
+			}
+			// 잘못된 번호 입력
+			else {
 				System.out.println("다시 입력하세요.");
 				reader.nextLine();
 			}
@@ -69,12 +49,10 @@ public class Main {
 	}
 	
 	public static int readInt(String prompt) {
-		
 		while (true) {
+			System.out.print(prompt);
 			try {
-				System.out.print(prompt);
-				String answer = reader.nextLine();
-				return Integer.parseInt(answer);
+				return Integer.parseInt(reader.nextLine());
 			} catch (NumberFormatException e) {
 				System.out.println("숫자만 입력하세요.");
 			}

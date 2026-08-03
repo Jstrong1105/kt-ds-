@@ -218,16 +218,18 @@ public class DefaultBoard implements Board {
 		
 		if (index < 0 || index >= this.board.size()) {
 			System.out.println(NOT_EXIST_ARTICLE_NUMBER);
+			return;
+		} 
+		
+		int commentIndex = Reader.readInt("삭제할 댓글 번호를 입력하세요: ");
+		
+		if (this.board.get(index).existComment(commentIndex)) {
+			this.board.get(index).commentDeleteAt(commentIndex);
+			System.out.println("댓글 삭제가 완료되었습니다.");
 		} else {
-			int commentIndex = Reader.readInt("삭제할 댓글 번호를 입력하세요: ");
-			
-			if (this.board.get(index).existComment(commentIndex)) {
-				this.board.get(index).commentDeleteAt(commentIndex);
-				System.out.println("댓글 삭제가 완료되었습니다.");
-			} else {
-				System.out.println(NOT_EXIST_COMMENT);
-			}
+			System.out.println(NOT_EXIST_COMMENT);
 		}
+		
 		System.out.println();
 	}
 
@@ -247,17 +249,18 @@ public class DefaultBoard implements Board {
 		
 		if (index < 0 || index >= this.board.size()) {
 			System.out.println(NOT_EXIST_ARTICLE_NUMBER);
-		} else {
-			int commentIndex = Reader.readInt("추천할 댓글 번호를 입력하세요: ");
-			
-			if (this.board.get(index).existComment(commentIndex)) {
-				this.board.get(index).goodComment(commentIndex);
-				System.out.println("댓글 추천이 완료되었습니다.");
-			} else {
-				System.out.println(NOT_EXIST_COMMENT);
-			}
-		}
+			return;
+		} 
 		
+		int commentIndex = Reader.readInt("추천할 댓글 번호를 입력하세요: ");
+		
+		if (this.board.get(index).existComment(commentIndex)) {
+			this.board.get(index).goodComment(commentIndex);
+			System.out.println("댓글 추천이 완료되었습니다.");
+		} else {
+			System.out.println(NOT_EXIST_COMMENT);
+		}
+	
 		System.out.println();
 	}
 

@@ -15,10 +15,14 @@ public class Comment {
 	private int good;
 	
 	public Comment(String content, String writer, String writeDate) {
+		this(content, writer, writeDate, 0);
+	}
+	
+	public Comment(String content, String writer, String writeDate, int good) {
 		this.CONTENT = content;
 		this.WRITER = writer;
 		this.WRITE_DATE = writeDate;
-		this.good = 0; // 멤버 변수라서 0 초기화 이지만 명시적으로 초기화 진행
+		this.good = good;
 	}
 	
 	// 정보 출력

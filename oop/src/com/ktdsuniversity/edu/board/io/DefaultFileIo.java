@@ -48,7 +48,7 @@ public class DefaultFileIo implements FileIO {
 					// 댓글 추가하기
 					for (int i = 1; i < datas.length; i++) {
 						String[] comString = datas[i].split(",");
-						art.addComment(new Comment(comString[0], comString[1], comString[2]));
+						art.addComment(new Comment(comString[0], comString[1], comString[2], Integer.parseInt(comString[3])));
 					}
 					load.add(art);
 				}

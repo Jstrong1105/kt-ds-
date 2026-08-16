@@ -117,7 +117,7 @@ public final class FileIO {
 						.collect(Collectors.toList())
 						;
 		} catch (IOException e) {
-			e.printStackTrace();
+			// e.printStackTrace();
 			return new ArrayList<>();
 		}
 	}

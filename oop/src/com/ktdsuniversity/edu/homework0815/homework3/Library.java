@@ -127,7 +127,7 @@ public class Library {
 						  ;
 				
 				books.forEach( (s,b) -> {
-					System.out.println("책 isbn:" + s);
+					System.out.println("책 isbn: " + s);
 					
 					Book book = b.get(0);
 					

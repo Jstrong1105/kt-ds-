@@ -1,6 +1,8 @@
 package com.ktdsuniversity.edu.tmdb.bckgrnd.vo;
 
-public class Bckgrnd {
+import com.ktdsuniversity.edu.tmdb.mv.vo.MvVO;
+
+public class BckgrndVO {
 	
 	/** 배경 아이디 */
 	private String bckdgndId;
@@ -11,6 +13,9 @@ public class Bckgrnd {
 	/** 배경 URL */
 	private String bckgrndUrl;
 
+	// 하나의 배경은 하나의 영화를 위한 것이다.
+	private MvVO mvVO;
+	
 	public String getBckdgndId() {
 		return this.bckdgndId;
 	}
@@ -33,6 +38,14 @@ public class Bckgrnd {
 
 	public void setBckgrndUrl(String bckgrndUrl) {
 		this.bckgrndUrl = bckgrndUrl;
+	}
+
+	public MvVO getMvVO() {
+		return this.mvVO;
+	}
+
+	public void setMvVO(MvVO mvVO) {
+		this.mvVO = mvVO;
 	}
 
 	@Override

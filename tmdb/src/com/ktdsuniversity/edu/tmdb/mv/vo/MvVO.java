@@ -1,6 +1,16 @@
 package com.ktdsuniversity.edu.tmdb.mv.vo;
 
-public class MV {
+import java.util.List;
+
+import com.ktdsuniversity.edu.tmdb.appr.vo.ApprVO;
+import com.ktdsuniversity.edu.tmdb.bckgrnd.vo.BckgrndVO;
+import com.ktdsuniversity.edu.tmdb.flmmkr.vo.FlmmkrVO;
+import com.ktdsuniversity.edu.tmdb.gnr.vo.GnrVO;
+import com.ktdsuniversity.edu.tmdb.kwrd.vo.KwrdVO;
+import com.ktdsuniversity.edu.tmdb.pstr.vo.PstrVO;
+import com.ktdsuniversity.edu.tmdb.vd.vo.VdVO;
+
+public class MvVO {
 
 	/** 영화 아이디 */
 	private String mvId;
@@ -45,11 +55,33 @@ public class MV {
 	private String orgnlLngg;
 	
 	/** 제작비 */
-	private String bdgt;
+	private long bdgt;
 	
 	/** 수익 */
-	private String bxOffcRvn;
+	private long bxOffcRvn;
 
+	// 하나의 영화는 여러개의 동영상을 가지고 있다.
+	private List<VdVO> vdList;
+	
+	// 하나의 영화는 여러개의 배경을 가지고 있다.
+	private List<BckgrndVO> bckgrndList;
+	
+	// 하나의 영화는 여러개의 포스터를 가지고 있다.
+	private List<PstrVO> pstrList;
+	
+	// 하나의 영화는 여러명이 제작했다.
+	private List<FlmmkrVO> flmmkrList;
+	
+	// 하나의 영화에 여러명이 출연했다.
+	private List<ApprVO> apprList;
+	
+	// 하나의 영화는 여러 개의 장르가 있다.
+	private List<GnrVO> gnrList;
+	
+	// 하나의 영화는 여러 개의 키워드가 있다.
+	private List<KwrdVO> kwrdList;
+	
+	
 	public String getMvId() {
 		return this.mvId;
 	}
@@ -118,7 +150,7 @@ public class MV {
 		return this.xUrl;
 	}
 
-	public void setxUrl(String xUrl) {
+	public void setXUrl(String xUrl) {
 		this.xUrl = xUrl;
 	}
 
@@ -162,20 +194,76 @@ public class MV {
 		this.orgnlLngg = orgnlLngg;
 	}
 
-	public String getBdgt() {
+	public long getBdgt() {
 		return this.bdgt;
 	}
 
-	public void setBdgt(String bdgt) {
+	public void setBdgt(long bdgt) {
 		this.bdgt = bdgt;
 	}
 
-	public String getBxOffcRvn() {
+	public long getBxOffcRvn() {
 		return this.bxOffcRvn;
 	}
 
-	public void setBxOffcRvn(String bxOffcRvn) {
+	public void setBxOffcRvn(long bxOffcRvn) {
 		this.bxOffcRvn = bxOffcRvn;
+	}
+
+	public List<VdVO> getVdList() {
+		return this.vdList;
+	}
+
+	public void setVdList(List<VdVO> vdList) {
+		this.vdList = vdList;
+	}
+
+	public List<BckgrndVO> getBckgrndList() {
+		return this.bckgrndList;
+	}
+
+	public void setBckgrndList(List<BckgrndVO> bckgrndList) {
+		this.bckgrndList = bckgrndList;
+	}
+
+	public List<PstrVO> getPstrList() {
+		return this.pstrList;
+	}
+
+	public void setPstrList(List<PstrVO> pstrList) {
+		this.pstrList = pstrList;
+	}
+	
+	public List<FlmmkrVO> getFlmmkrList() {
+		return this.flmmkrList;
+	}
+
+	public void setFlmmkrList(List<FlmmkrVO> flmmkrList) {
+		this.flmmkrList = flmmkrList;
+	}
+
+	public List<ApprVO> getApprList() {
+		return this.apprList;
+	}
+
+	public void setApprList(List<ApprVO> apprList) {
+		this.apprList = apprList;
+	}
+
+	public List<GnrVO> getGnrList() {
+		return this.gnrList;
+	}
+
+	public void setGnrList(List<GnrVO> gnrList) {
+		this.gnrList = gnrList;
+	}
+
+	public List<KwrdVO> getKwrdList() {
+		return this.kwrdList;
+	}
+
+	public void setKwrdList(List<KwrdVO> kwrdList) {
+		this.kwrdList = kwrdList;
 	}
 
 	@Override

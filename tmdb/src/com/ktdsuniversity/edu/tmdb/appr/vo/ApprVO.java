@@ -1,6 +1,9 @@
 package com.ktdsuniversity.edu.tmdb.appr.vo;
 
-public class Appr {
+import com.ktdsuniversity.edu.tmdb.invlvd.vo.InvlvdVO;
+import com.ktdsuniversity.edu.tmdb.mv.vo.MvVO;
+
+public class ApprVO {
 	
 	/** 출연 아이디 */
 	private String apprId;
@@ -14,6 +17,12 @@ public class Appr {
 	/** 배역 */
 	private String rl;
 
+	// 출연자 한명이 하나의 영화에 출연했다.
+	private MvVO mvVO;
+	
+	// 출연자의 정보
+	private InvlvdVO invlvdVO;
+	
 	public String getApprId() {
 		return this.apprId;
 	}
@@ -44,6 +53,22 @@ public class Appr {
 
 	public void setRl(String rl) {
 		this.rl = rl;
+	}
+	
+	public MvVO getMvVO() {
+		return this.mvVO;
+	}
+
+	public void setMvVO(MvVO mvVO) {
+		this.mvVO = mvVO;
+	}
+
+	public InvlvdVO getInvlvdVO() {
+		return this.invlvdVO;
+	}
+
+	public void setInvlvdVO(InvlvdVO invlvdVO) {
+		this.invlvdVO = invlvdVO;
 	}
 
 	@Override

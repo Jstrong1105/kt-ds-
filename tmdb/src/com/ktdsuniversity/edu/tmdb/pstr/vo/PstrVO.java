@@ -1,6 +1,8 @@
 package com.ktdsuniversity.edu.tmdb.pstr.vo;
 
-public class Pstr {
+import com.ktdsuniversity.edu.tmdb.mv.vo.MvVO;
+
+public class PstrVO {
 	
 	/** 포스터 아이디 */
 	private String pstrId;
@@ -11,6 +13,9 @@ public class Pstr {
 	/** 포스터 URL */
 	private String pstrUrl;
 
+	// 하나의 포스터는 하나의 영화를 위한 것이다.
+	private MvVO mvVO;
+	
 	public String getPstrId() {
 		return this.pstrId;
 	}
@@ -33,6 +38,14 @@ public class Pstr {
 
 	public void setPstrUrl(String pstrUrl) {
 		this.pstrUrl = pstrUrl;
+	}
+	
+	public MvVO getMvVO() {
+		return this.mvVO;
+	}
+
+	public void setMvVO(MvVO mvVO) {
+		this.mvVO = mvVO;
 	}
 
 	@Override

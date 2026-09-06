@@ -1,0 +1,15 @@
+.center {
+  border: 1px solid #000;
+  padding: 0.625rem;
+
+  /* 고정 너비(폭) */
+  /* width: 800px; */
+
+  /* 가변 너비(폭) */
+  width: 80%;
+  /* 최대 너비*/
+  max-width: 800px;
+  min-width: 500px;
+
+  margin: 0 auto;
+}

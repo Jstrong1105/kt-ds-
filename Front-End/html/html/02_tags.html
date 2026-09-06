@@ -1,0 +1,127 @@
+<!doctype html>
+<html>
+  <head>
+    <title>태그 실습</title>
+  </head>
+  <body>
+    <!-- anchor tag - Link 생성 -->
+    <a href="https://www.google.com">구글로 이동하기</a>
+    <a href="https://www.naver.com">네이버로 이동하기</a>
+
+    <!-- divide tag - 본문의 영역을 나누는 태그 -->
+    <div>첫 번째 영역입니다.</div>
+    <div>두 번째 영역입니다.</div>
+
+    <!-- compound tags - 합성 태그 
+         한 개의 태그만으로는 사용할 수 없는 태그 들
+         여러 개의 태그를 합성해서 사용해야만 하는 태그들 
+    -->
+
+    <!-- unorderd list (ul + li) -->
+    <ul>
+      <li>첫 번째 아이템</li>
+      <li>두 번째 아이템</li>
+      <li>
+        <ul>
+          <li>세 번째 아이템</li>
+          <li>네 번째 아이템</li>
+        </ul>
+      </li>
+    </ul>
+    <ul>
+      <li>첫 번째 아이템</li>
+      <li>두 번째 아이템</li>
+      <ul>
+        <li>세 번째 아이템</li>
+        <li>네 번째 아이템</li>
+      </ul>
+    </ul>
+
+    <!-- ordered list (ol + li) -->
+    <ol>
+      <li>첫 번째 아이템</li>
+      <li>두 번째 아이템</li>
+      <li>
+        <ol>
+          <li>세 번째 아이템</li>
+          <li>네 번째 아이템</li>
+        </ol>
+      </li>
+    </ol>
+    <ol>
+      <li>첫 번째 아이템</li>
+      <li>두 번째 아이템</li>
+      <ol>
+        <li>세 번째 아이템</li>
+        <li>네 번째 아이템</li>
+      </ol>
+    </ol>
+
+    <!-- select (dropdown box) (select + option + optgroup) -->
+    <select>
+      <option>항목 1</option>
+      <option>항목 2</option>
+      <option>항목 3</option>
+      <optgroup label="항목 A">
+        <option>항목 4</option>
+        <option>항목 5</option>
+        <option>항목 6</option>
+      </optgroup>
+      <optgroup label="항목 B">
+        <option>항목 7</option>
+        <option>항목 8</option>
+        <option>항목 9</option>
+      </optgroup>
+    </select>
+
+    <!-- select 를 대체할 수 있는 datalist -->
+    <input list="auto-complete" />
+    <datalist id="auto-complete">
+      <option>A section</option>
+      <option>B section</option>
+      <option>C section</option>
+    </datalist>
+
+    <!-- table (table + thead + tbody + tfoot + tr + td + th + colgroup + col) -->
+    <!-- 표 만들기 -->
+    <table style="width: 100%">
+      <!-- 각 칸의 크기 지정 -->
+      <colgroup>
+        <col width="20%" />
+        <col width="40%" />
+        <col width="40%" />
+      </colgroup>
+      <!-- 표의 제목 부분 표현 -->
+      <thead>
+        <tr>
+          <th>제목 1</th>
+          <th>제목 2</th>
+          <th>제목 3</th>
+        </tr>
+      </thead>
+
+      <!-- 표의 내용 부분 표현 -->
+      <tbody>
+        <tr>
+          <td>제목입니다.</td>
+          <td>두 번째 제목입니다.</td>
+          <td>세 번째 제목입니다.</td>
+        </tr>
+        <tr>
+          <td>제목입니다.</td>
+          <td>두 번째 제목입니다.</td>
+          <td>세 번째 제목입니다.</td>
+        </tr>
+      </tbody>
+
+      <!-- 표의 하단 부분 표현 -->
+      <tfoot>
+        <tr>
+          <td>A</td>
+          <td>B</td>
+          <td>C</td>
+        </tr>
+      </tfoot>
+    </table>
+  </body>
+</html>

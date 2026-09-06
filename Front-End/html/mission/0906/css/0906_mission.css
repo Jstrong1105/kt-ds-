@@ -1,0 +1,114 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #f7fdfd;
+}
+
+.wrapper {
+  background-color: white;
+  width: 1000px;
+  margin: 0 auto;
+}
+
+.auther {
+  text-align: center;
+  padding: 2rem;
+}
+
+.tag {
+  padding: 1rem;
+}
+
+.tag > ul {
+  padding: 0.5rem;
+  border-top: 1px solid #333;
+  border-bottom: 1px solid #333;
+}
+
+.tag > ul > li {
+  display: inline-block;
+  margin: 0 1rem;
+}
+
+.tag-now {
+  color: green;
+  font-weight: bold;
+}
+
+.tag li:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.tag-now:hover {
+  text-decoration: underline green;
+}
+
+.article > div {
+  vertical-align: top;
+  display: inline-block;
+}
+
+.article-text {
+  width: 65%;
+}
+
+.article-text > div {
+  margin: 10px;
+}
+
+.article-img {
+  width: 33%;
+  text-align: right;
+}
+
+.article-img > img {
+  width: 15rem;
+}
+
+.article-writer-info > div {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.article-writer-info:hover {
+  cursor: pointer;
+}
+
+.article-writer-info:hover > .write-info > .writer-name {
+  text-decoration: underline;
+}
+
+.article-title:hover,
+.article-content:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.write-date {
+  color: #a3a3a3;
+}
+
+.article-title {
+  font-weight: bold;
+}
+
+.article-content {
+  color: #737373;
+}
+
+.article-point > div {
+  display: inline-block;
+  color: #a3a3a3;
+}
+
+.article-img:hover {
+  cursor: pointer;
+}
+
+.article {
+  border-bottom: 1px solid #c7c7c7;
+  margin: 10px;
+}

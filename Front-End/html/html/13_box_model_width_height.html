@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>박스모델 너비와 높이</title>
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="../css/13_box_model_width_height.css"
+    />
+  </head>
+  <body>
+    <div class="full">
+      FullBox - width: 100%
+      <div class="full">
+        FullBox - width: 100%
+        <div class="full">FullBox - width: 100%</div>
+        <div class="half">HalfBox - width: 50%</div>
+      </div>
+      <div class="half">
+        HalfBox - width: 50%
+        <div class="full">FullBox - width: 100%</div>
+        <div class="half">HalfBox - width: 50%</div>
+      </div>
+    </div>
+    <div class="half">
+      HalfBox - width: 50%
+      <div class="full">
+        FullBox - width: 100%
+        <div class="full">FullBox - width: 100%</div>
+        <div class="half">HalfBox - width: 50%</div>
+      </div>
+      <div class="half">
+        HalfBox - width: 50%
+        <div class="full">FullBox - width: 100%</div>
+        <div class="half">HalfBox - width: 50%</div>
+      </div>
+    </div>
+  </body>
+</html>

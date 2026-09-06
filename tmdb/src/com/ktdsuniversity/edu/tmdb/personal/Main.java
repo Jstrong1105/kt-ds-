@@ -1,8 +1,5 @@
 package com.ktdsuniversity.edu.tmdb.personal;
 
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-
 import com.ktdsuniversity.edu.tmdb.bckgrnd.vo.BckgrndVO;
 import com.ktdsuniversity.edu.tmdb.mv.vo.MvVO;
 
@@ -10,12 +7,14 @@ public class Main {
 	
 	public static void main(String[] args) {
 		
+		ConnectionUtil conn = new ConnectionUtil();
+		
 		String query = """
 				SELECT MV_ID AS "mvId"
 				     , TTL   AS "ttl"
 				     , MV_RTNG AS "mvRtng"
 				     , RNNG_TM AS "rnngTm"
-				     , TO_CHAR(RLS_DT,'YYYY-MM- DD') AS "rlsDt"
+				     , TO_CHAR(RLS_DT,'YYYY-MM-DD') AS "rlsDt"
 				     , MAIN_PSTL_URL AS "mainPstlUrl"
 				     , FB_URL AS "fbUrl"
 				     , X_URL AS "xUrl"
@@ -26,29 +25,29 @@ public class Main {
 				     , ORGNL_LNGG AS "orgnlLngg"
 				     , BDGT AS "bdgt"
 				     , BX_OFFC_RVN AS "bxOffcRvn"
-				     , SMMR AS "smmmr"
+				     , SMMR AS "smmr"
 				  FROM MV
 				 WHERE DEL_YN = 'N'
 				   AND MV_ID = ?
 				""";
 		
-		ConnectionUtil.getData(query, Main::setter, MvVO.class).forEach(System.out::println);
+		conn.setQuery(query)
+		    .setParam(pstmt -> pstmt.setString(1, "1-spider-man-brand-new-day"))
+		    .getList(MvVO.class)
+		    .forEach(System.out::println);
+		
 		
 		query = """
 				SELECT BCKGRND_ID AS "bckdgndId"
 				     , MV_ID AS "mvId"
-				     , BCKGRND_URL "bckdgnd"
+				     , BCKGRND_URL "bckgrndUrl"
 				  FROM BCKGRND 
+				 WHERE MV_ID = ?
 				""";
 		
-		ConnectionUtil.getData(query, pstml -> {}, BckgrndVO.class).forEach(System.out::println);
-	}
-	
-	private static void setter(PreparedStatement pstmt) {
-		try {
-			pstmt.setString(1, "1-spider-man-brand-new-day");
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+		conn.setQuery(query)
+			.setParam(pstmt -> pstmt.setString(1, "1-spider-man-brand-new-day"))
+		    .getList(BckgrndVO.class)
+		    .forEach(System.out::println);
 	}
 }

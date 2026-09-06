@@ -1,0 +1,85 @@
+div {
+  border: 1px solid #000;
+  padding: 1rem;
+  margin: 0.5rem;
+}
+
+.inline-box {
+  display: inline-block;
+  width: 20%;
+
+  /*
+  text-align: left; => inline-box 의 자식들을 왼쪽으로 정렬해라
+  text-align: initial; => 언어에 맞추어서 정렬해라.
+  */
+  text-align: initial;
+}
+
+.text-align-left {
+  text-align: left;
+}
+
+.text-align-center {
+  text-align: center;
+}
+
+.text-align-right {
+  text-align: right;
+}
+
+.box-1 {
+  width: 10rem;
+  height: 10rem;
+}
+
+.box-2 {
+  width: 5rem;
+  height: 5rem;
+}
+
+.box-3 {
+  width: 15rem;
+  height: 15rem;
+}
+
+.box {
+  display: inline-block;
+}
+
+.vertical-align-top > div {
+  vertical-align: top;
+}
+
+.vertical-align-middle > div {
+  vertical-align: middle;
+}
+
+.vertical-align-bottom > div {
+  vertical-align: bottom;
+}
+
+.vertical-align-top,
+.vertical-align-middle,
+.vertical-align-bottom {
+  height: 30rem;
+}
+
+#user-email {
+  outline: 0;
+  padding: 0.625rem;
+}
+
+#user-password {
+  outline-style: 0;
+  padding: 0.625rem;
+}
+
+img {
+  width: 20rem;
+}
+
+.aligns > label,
+.aligns > input,
+.aligns > img {
+  vertical-align: middle;
+}

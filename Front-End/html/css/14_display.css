@@ -1,0 +1,27 @@
+span {
+  /* inline => width, height 지정 불가 */
+
+  /* display: inline-block; */
+
+  display: block;
+
+  border: 1px solid #000;
+  width: 100px;
+  height: 30px;
+  padding: 2rem;
+  margin: 2rem;
+}
+
+body {
+  background-color: #f3f3f3;
+}
+
+.navigation-item {
+  display: inline-block;
+  padding: 0.625rem;
+  margin: 2px;
+
+  border: 1px solid #d3d3d3;
+  border-radius: 1.25rem;
+  background-color: #fff;
+}

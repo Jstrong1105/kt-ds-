@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Style 우선순위 실습</title>
+    <!-- External Style: 우선순위가 가장 낮다. -->
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="../css/05_external_style.css"
+    />
+    <!-- Internal Style: 우선순위가 External Style보다 높다. -->
+    <style type="text/css">
+      div {
+        font-size: 0.5rem; /* 8px */
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Inline Style: 우선순위가 가장 높다. -->
+    <div style="background-color: #f0f">첫 번째 Div</div>
+    <div style="color: #a00">두 번째 Div</div>
+    <div style="font-size: 3rem">세 번째 Div</div>
+  </body>
+</html>

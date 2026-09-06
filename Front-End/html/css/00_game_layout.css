@@ -1,0 +1,10 @@
+.header {
+  height: 100px;
+  background-color: blue;
+}
+
+.side-bar {
+  width: 100px;
+  height: 500px;
+  background-color: yellow;
+}

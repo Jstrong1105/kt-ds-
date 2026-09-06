@@ -1,0 +1,28 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #f9f9f9;
+}
+
+.wrapper {
+  width: 100%;
+  max-width: 680px;
+  background-color: white;
+  margin: 0 auto;
+}
+
+.title {
+  background-color: yellow;
+}
+
+.search {
+  background-color: #eee;
+}
+
+.article {
+  height: 50px;
+  border: 1px solid #000;
+  margin: 1px;
+}

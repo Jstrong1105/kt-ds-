@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>GitHub SignUp</title>
+    <link
+      rel="stylesheet"
+      href="../css/29_form_github_sign_up.css"
+      type="text/css"
+    />
+  </head>
+  <body>
+    <div class="wrapper">
+      <h3>Sign up for GitHub</h3>
+      <button>Continue with Google</button>
+      <button>Continue with Apple</button>
+
+      <div class="seperator">
+        <span>or</span>
+      </div>
+
+      <label for="user-email">Email<sup></sup></label>
+      <input id="user-email" type="email" placeholder="Email" required />
+
+      <label for="user-password">Password<sup></sup></label>
+      <input
+        id="user-password"
+        type="password"
+        placeholder="Password"
+        minlength="8"
+        maxlength="15"
+        required
+      />
+      <div class="rules">
+        Password should be at least 15 characters OR at least 8 characters
+        including a number and a lowercase letter.
+      </div>
+      <label for="user-name">Username<sup></sup></label>
+      <input id="user-name" type="text" placeholder="Username" required />
+      <div class="rules">
+        Username may only contain alphanumeric characters or single hyphens, and
+        cannot begin or end with a hyphen.
+      </div>
+      <label for="user-country">Your Country/Region<sup></sup></label>
+      <select id="user-country" required>
+        <option value="Korea, South">Korea, South</option>
+      </select>
+      <div class="rules">
+        For compliance reasons, we're required to collect country information to
+        send you occasional updates and announcements
+      </div>
+
+      <button class="submit">Create account ></button>
+    </div>
+  </body>
+</html>

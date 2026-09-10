@@ -1,0 +1,68 @@
+/* label:has(+ input[type="radio"]) {
+  border: 1px solid #0f0;
+} */
+
+label + input[type="checkbox"] {
+  display: none;
+}
+
+label:has(+ input[type="checkbox"]:checked) {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+
+  border-radius: 50%;
+
+  background-image: url(../images/naver_sprite.png);
+  background-size: 368px 352px;
+  background-position: -288px -325px;
+  background-repeat: no-repeat;
+}
+
+label:has(+ input[type="checkbox"]:not(:checked)) {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+
+  border: 1px solid #ccc;
+  border-radius: 50%;
+}
+
+/* 선택된 radio의 label 스타일 */
+label:has(+ input[type="radio"]:checked) {
+  border: 1px solid #5f5;
+  color: #5f5;
+}
+
+/* 선택되지 않은 radio의 label 스타일 */
+label:has(+ input[type="radio"]:not(:checked)) {
+  border: 1px solid #bbb;
+  color: #bbb;
+}
+
+.input-area {
+  font-size: 0;
+
+  & .input-field {
+    display: inline-block;
+
+    & input {
+      display: none;
+    }
+  }
+
+  & label {
+    font-size: 1rem;
+    padding: 10px;
+
+    &[for="male"] {
+      border-top-left-radius: 10px;
+      border-bottom-left-radius: 10px;
+    }
+
+    &[for="female"] {
+      border-top-right-radius: 10px;
+      border-bottom-right-radius: 10px;
+    }
+  }
+}

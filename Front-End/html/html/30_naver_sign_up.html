@@ -1,0 +1,154 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Naver</title>
+    <link rel="stylesheet" href="../css/30_naver_sign_up.css" type="text/css" />
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="title">Naver</div>
+
+      <div class="data-form">
+        <div class="agree-real-name">
+          <label id="label" for="agree-real-name"
+            ><span>실명 인증된 아이디로 가입</span></label
+          >
+          <label for="agree-real-name"></label>
+          <input type="checkbox" name="agree-real-name" id="agree-real-name" />
+        </div>
+
+        <div class="login-info">
+          <div class="login-info-id">
+            <label for="login-id"
+              ><div class="login-info-id-image image"></div
+            ></label>
+
+            <input
+              class="info-focus"
+              type="text"
+              name="logig-id"
+              id="login-id"
+              placeholder="아이디"
+            />
+          </div>
+
+          <div class="login-info-password">
+            <label for="login-password"
+              ><div class="login-info-password-image image"></div
+            ></label>
+            <input
+              class="info-focus"
+              type="password"
+              name="login-password"
+              id="login-password"
+              placeholder="비밀번호"
+            />
+          </div>
+
+          <div class="login-info-email">
+            <label for="login-email">
+              <div class="login-info-email image"></div>
+            </label>
+            <input
+              class="info-focus"
+              type="email"
+              name="login-email"
+              id="login-email"
+              placeholder="[선택] 이메일주소 (비밀번호 찾기 등 본인 확인용)"
+            />
+          </div>
+        </div>
+
+        <div class="user-info">
+          <div class="user-name">
+            <label for="user-name">
+              <div class="user-name-image image"></div>
+            </label>
+            <input
+              class="info-focus"
+              type="text"
+              name="user-name"
+              id="user-name"
+              placeholder="이름"
+            />
+          </div>
+
+          <div class="user-birth">
+            <label for="user-birth">
+              <div class="user-birth-image image"></div>
+            </label>
+            <input
+              class="info-focus"
+              type="date"
+              name="user-birth"
+              id="user-birth"
+              placeholder="생년월일 8자리"
+            />
+          </div>
+
+          <div class="user-tellecom">
+            <label for="user-tellecom">
+              <div class="image"></div>
+            </label>
+            <select name="user-tellecom" id="user-tellecom">
+              <option value="">통신사 선택</option>
+              <option value="">KT</option>
+              <option value="">SKT</option>
+            </select>
+
+            <div class="user-tellecom-choice">
+              <button>KT</button>
+              <button>SKT</button>
+            </div>
+          </div>
+
+          <div class="user-gender-local">
+            <div class="gender-local-left">
+              <div class="gender">
+                <label for="male">남자</label>
+                <input type="radio" name="gender" id="male" checked />
+                <label for="female">여자</label>
+                <input type="radio" name="gender" id="female" />
+              </div>
+            </div>
+
+            <div class="gender-local-right">
+              <div class="local">
+                <label for="local">내국인</label>
+                <input type="radio" name="local" id="local" checked />
+                <label for="foreign">외국인</label>
+                <input type="radio" name="local" id="foreign" />
+              </div>
+            </div>
+          </div>
+
+          <div class="user-tel">
+            <label for="user-tel">
+              <div class="image"></div>
+            </label>
+            <input
+              class="info-focus"
+              type="tel"
+              name="user-tel"
+              id="user-tel"
+              placeholder="휴대전화번호"
+            />
+          </div>
+        </div>
+
+        <div class="agree-terms">
+          <label for="agree-terms"></label>
+          <input type="checkbox" name="agree-terms" id="agree-terms" />
+          <label id="label" for="agree-terms"
+            ><span>[필수]</span> <span>인증 약관 전체 동의</span></label
+          >
+        </div>
+
+        <div class="submit">
+          <button>인증요청</button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

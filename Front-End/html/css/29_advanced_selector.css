@@ -1,0 +1,100 @@
+/** @format */
+
+hr {
+  margin: 1rem 0;
+}
+
+div.first,
+div.second,
+div.third,
+div.fourth {
+  font-weight: 900;
+  font-size: 1.3rem;
+}
+
+p {
+  color: #888;
+}
+
+div:has(> p[class^="child-"]) {
+  font-weight: 600;
+  font-size: 1rem;
+}
+p[class^="child-"] {
+  color: #a00;
+  font-weight: 400;
+}
+
+div.parent [class^="child-"] {
+  margin-left: 30px;
+}
+/* "+" 아래쪽 인접 형제 하나만 선택 */
+.first + p {
+  color: #f00;
+
+  &::after {
+    content: " <- .first 인접 형제 중 p 태그 하나";
+  }
+}
+
+.second + p {
+  color: #f00;
+
+  &::after {
+    content: " <- .second 인접 형제 중 p 태그 하나";
+  }
+}
+
+/* "~" 아래쪽 형제 모두 선택 */
+.second ~ p {
+  color: #0f0;
+
+  &::after {
+    content: " <- .second 아래쪽 형제 중 모든 p 태그들";
+  }
+}
+
+/* "a:has(+ b)" b위의 a 형제 하나 선택 */
+p:has(+ .third) {
+  color: #00f;
+
+  &::after {
+    content: " <- .third 위쪽의 형제 중 p 태그 하나";
+  }
+}
+
+p:has(+ .fourth) {
+  color: #0ff;
+
+  &::after {
+    content: " <- .fourth 위쪽의 형제 중 p 태그 하나";
+  }
+}
+
+/* "a:has(~ b)" b위의 a 모든 형제 선택 */
+p:has(~ .fourth) {
+  color: #f0f;
+
+  &::after {
+    content: " <- fourth 위쪽의 형제 중 모든 p 태그들";
+  }
+}
+
+/* "a:has(> b)" b의 부모 a 선택 */
+.parent:has(> .child-1) {
+  color: #ff0;
+
+  &::before {
+    content: "child-1 의 부모 중 .parent -> ";
+    color: #f00;
+  }
+}
+
+.parent:has(.child-4) {
+  color: #ff0;
+
+  &::before {
+    content: "child-4 의 부모 중 .parent -> ";
+    color: #f00;
+  }
+}

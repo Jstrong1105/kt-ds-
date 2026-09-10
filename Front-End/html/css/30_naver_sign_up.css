@@ -1,0 +1,291 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+.wrapper {
+  width: 700px;
+
+  padding: 10px;
+
+  margin: 0 auto;
+}
+
+.title {
+  color: rgb(21, 146, 21);
+
+  font-weight: bold;
+}
+
+.agree-real-name {
+  text-align: right;
+  padding: 10px;
+
+  & > span {
+    color: #999;
+    font-size: 0.8rem;
+  }
+
+  & label {
+    display: inline-block;
+
+    width: 12px;
+    height: 12px;
+
+    border-radius: 50%;
+  }
+
+  & input {
+    display: none;
+  }
+}
+
+label:has(+ input[type="checkbox"]:not(:checked)) {
+  border: 1px solid black;
+}
+
+label:has(+ input[type="checkbox"]:checked) {
+  background-image: url(../images/naver_sprite.png);
+  background-size: 368px 352px;
+  background-position: -288px -325px;
+  background-repeat: no-repeat;
+}
+
+.login-info > div,
+.user-info > div {
+  border: 1px solid #999;
+  border-radius: 5px;
+  padding: 10px;
+
+  & * {
+    vertical-align: middle;
+  }
+}
+
+.agree-terms {
+  border: 1px solid #999;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.image {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+
+  background-position: -428px -778px;
+  background-color: #999;
+  background-repeat: no-repeat;
+}
+
+.info-focus:focus {
+  outline: 0;
+  background-color: #f2ffff;
+}
+
+.login-info-id {
+  & > label > div {
+    background-image: url("../images/naver_sprite.png");
+  }
+
+  & input[type="text"] {
+    width: 80%;
+    border: 0;
+  }
+
+  &::after {
+    content: "@naver.com";
+    font-size: 0.8rem;
+  }
+}
+
+.login-info-password {
+  & > label > div {
+    background-image: url("../images/naver_sprite.png");
+  }
+
+  & input {
+    width: 90%;
+    border: 0;
+  }
+}
+
+.login-info-email {
+  & > label > div {
+    background-image: url("../images/naver_sprite.png");
+  }
+
+  & input {
+    width: 90%;
+    border: 0;
+  }
+}
+
+.user-info {
+  margin-top: 1rem;
+}
+
+.user-name {
+  & > label > div {
+    background-image: url("../images/naver_sprite.png");
+  }
+
+  & input {
+    width: 90%;
+    border: 0;
+  }
+}
+
+.user-birth {
+  & > label > div {
+    background-image: url("../images/naver_sprite.png");
+  }
+
+  & input {
+    width: 90%;
+    border: 0;
+  }
+}
+
+.user-tellecom {
+  position: relative;
+
+  & > label > div {
+    background-image: url("../images/naver_sprite.png");
+  }
+
+  & select {
+    width: 90%;
+    border: 0;
+  }
+
+  &:hover {
+    & .user-tellecom-choice {
+      display: inline-block;
+    }
+  }
+}
+
+.user-tellecom-choice {
+  display: none;
+
+  position: absolute;
+
+  top: 20px;
+  left: 100px;
+
+  width: 150px;
+  height: 50px;
+
+  background-color: #999;
+
+  font-size: 0;
+
+  & button {
+    width: 50%;
+    height: 100%;
+
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.user-gender-local {
+  font-size: 0;
+
+  & div {
+    display: inline-block;
+
+    width: 50%;
+
+    padding: 5px;
+    border: 0;
+
+    text-align: center;
+
+    & div {
+      width: 100%;
+    }
+  }
+
+  & label {
+    font-size: 1rem;
+
+    border: 2px solid #333;
+    padding: 5px 10px;
+
+    &:first-of-type {
+      border-top-left-radius: 10px;
+      border-bottom-left-radius: 10px;
+    }
+
+    &:last-of-type {
+      border-top-right-radius: 10px;
+      border-bottom-right-radius: 10px;
+    }
+  }
+
+  & label:has(+ input[type="radio"]:checked) {
+    border: 2px solid rgb(25, 223, 25);
+    color: rgb(25, 223, 25);
+  }
+
+  & input[type="radio"] {
+    display: none;
+  }
+}
+
+.user-tel {
+  & > label > div {
+    background-image: url("../images/naver_sprite.png");
+  }
+
+  & input {
+    width: 90%;
+    border: 0;
+  }
+}
+
+.agree-terms {
+  margin-top: 1rem;
+
+  & label {
+    display: inline-block;
+
+    width: 12px;
+    height: 12px;
+
+    border-radius: 50%;
+  }
+
+  & span:nth-of-type(1) {
+    color: rgb(21, 146, 21);
+  }
+
+  & > input[type="checkbox"] {
+    display: none;
+  }
+}
+
+.submit {
+  & > button {
+    width: 100%;
+    height: 50px;
+
+    font-size: 1.5rem;
+
+    margin-top: 100px;
+    border: 0;
+    border-radius: 5px;
+
+    background-color: rgb(21, 146, 21);
+    color: #fff;
+  }
+}
+
+#label {
+  width: auto;
+}

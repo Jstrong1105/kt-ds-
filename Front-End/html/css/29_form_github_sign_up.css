@@ -1,0 +1,127 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  color: #333;
+}
+
+.wrapper {
+  width: 700px;
+  margin: 0 auto;
+}
+
+button {
+  display: block;
+  width: 100%;
+
+  &:first-of-type {
+    margin-bottom: 10px;
+  }
+
+  padding: 5px 0;
+  border: 1px solid #bbb;
+  border-radius: 5px;
+
+  background-color: #eee;
+
+  font-size: 1.01rem;
+  font-weight: 500;
+}
+
+.seperator {
+  margin: 1.5rem 0;
+  border-top: 1px solid #ccc;
+
+  text-align: center;
+
+  position: relative;
+
+  & > span {
+    position: absolute;
+    top: -15px;
+
+    background-color: #fff;
+
+    padding: 0 10px;
+  }
+}
+
+label {
+  display: inline-block;
+  margin-top: 1rem;
+
+  color: #111;
+
+  font-size: 0.9rem;
+
+  &:first-of-type {
+    margin-top: 0;
+  }
+
+  & > sup {
+    font-size: 0.55rem;
+  }
+}
+
+input[type="email"] {
+  display: block;
+  width: 100%;
+
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 7px;
+}
+
+label + input,
+label + select {
+  display: block;
+  width: 100%;
+
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 7px;
+}
+
+.rules {
+  font-size: 0.7rem;
+  color: #999;
+
+  margin-top: 2px;
+}
+
+label:has(+ select[required]),
+label:has(+ input[required]) {
+  & > sup::after {
+    content: "*";
+  }
+}
+
+/* 
+label:has(+ input[required], + select[required]) {
+  & > sup::after {
+    content: "*";
+  }
+} 
+*/
+
+.submit {
+  display: block;
+  width: 100%;
+
+  background-color: #0a0;
+
+  padding: 10px;
+  border: 0;
+  border-radius: 7px;
+  margin-top: 1rem;
+
+  font-size: 1.2rem;
+
+  color: #fff;
+
+  &:hover {
+    background-color: #030;
+  }
+}

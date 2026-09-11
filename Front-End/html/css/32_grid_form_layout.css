@@ -1,0 +1,33 @@
+div.grid-form {
+  display: grid;
+  grid-template-columns: minmax(20px, auto) 1fr;
+  /* row-gap: 10px;
+  column-gap: 10px; */
+  gap: 10px;
+
+  align-items: center;
+  text-align: center;
+
+  & > input {
+    padding: 10px;
+  }
+}
+
+.button-area {
+  display: flex;
+  gap: 10px;
+
+  justify-content: flex-end;
+
+  grid-column: 1 / -1;
+
+  & > button {
+    padding: 5px 10px;
+  }
+}
+
+@media (max-width: 500px) {
+  div.grid-form {
+    grid-template-columns: 1fr;
+  }
+}

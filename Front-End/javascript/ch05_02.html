@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script type="text/javascript">
+      onload = function () {
+        // .button 을 찾아서 클릭 이벤트를 할당한다. (2개)
+        const buttons = document.querySelectorAll(".button");
+
+        // buttons 를 반복
+        buttons.forEach(function (eachButton) {
+          eachButton.onclick = function (event) {
+            // 클릭한 버튼의 부모 중 .box 를 찾는다.
+            const box = this.closest(".box");
+
+            // box 에서 data-name 을 가져온다.
+            const name = box.dataset.name;
+
+            // 클릭한 버튼의 box에서 .area 를 찾는다.
+            const area = box.querySelector(".area");
+
+            console.log(area);
+          };
+        });
+      };
+    </script>
+  </head>
+  <body>
+    <div class="box" data-name="첫 번째 박스">
+      <div class="item">
+        <div class="content">hello world</div>
+        <div class="area">
+          <div>
+            <button class="button">버튼</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="box" data-name="두 번째 박스">
+      <div class="item">
+        <div class="content">hello world</div>
+        <div class="area">
+          <div>
+            <button class="button">버튼</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

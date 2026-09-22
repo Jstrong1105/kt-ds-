@@ -1,0 +1,133 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>J-Movies</title>
+    <link rel="stylesheet" href="../css/tmdb_common.css" type="text/css" />
+    <link rel="stylesheet" href="../css/tmdb_article.css" type="text/css" />
+    <script type="text/javascript" src="../javascript/tmdb_article.js"></script>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="header">
+        <div class="header-left">
+          <img src="../images/logo-icon.svg" alt="" class="logo-icon" />
+          <span>J-Movies</span>
+        </div>
+
+        <div class="header-center">
+          <input type="text" name="kwd" id="kwd" placeholder="영화 검색" />
+          <img src="../images/search-icon.svg" alt="" class="search-icon" />
+        </div>
+
+        <div class="header-right">
+          <div class="icon">
+            <img src="../images/home-icon.svg" alt="" class="home-icon" />
+          </div>
+
+          <div class="icon">
+            <img src="../images/login-icon.svg" alt="" class="login-icon" />
+          </div>
+        </div>
+      </div>
+
+      <div class="aside">
+        <div class="side-btn">
+          <img src="../images/no-fill-star-icon.svg" alt="" />
+          <span>인기 영화</span>
+        </div>
+
+        <div class="side-btn">
+          <img src="../images/sun-icon.svg" alt="" />
+          <span>신규 영화</span>
+        </div>
+
+        <div class="side-btn">
+          <img src="../images/thumb-icon.svg" alt="" />
+          <span>즐겨찾기</span>
+        </div>
+
+        <div class="side-btn">
+          <img src="../images/history-icon.svg" alt="" />
+          <span>최근 시청</span>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="movie-info">
+          <div class="poster">
+            <img src="" alt="" class="poster-img" />
+          </div>
+
+          <div class="info">
+            <div class="title">
+              <span class="adult">(19+)</span>
+              <span class="title-text"></span>
+            </div>
+
+            <div class="tagline"></div>
+
+            <div class="release-info">
+              <span id="release-date"></span>
+              <span id="runtime"></span>
+              <span id="status"></span>
+            </div>
+
+            <div class="point-info">
+              <span id="vote-average"></span>
+              <span id="vote-count"></span>
+            </div>
+
+            <div class="genre-info">
+              <template id="genre-item-template">
+                <div class="genre-item"></div>
+              </template>
+            </div>
+          </div>
+        </div>
+
+        <!-- 줄거리 -->
+        <div class="overview-title">줄거리</div>
+        <div class="overview"></div>
+
+        <!-- 키워드 -->
+        <div class="keyword">
+          <template id="keyword-item-template">
+            <div class="keyword-item">newyork-city</div>
+          </template>
+        </div>
+
+        <!-- 
+        제작사들
+        수익
+        제작비
+        -->
+
+        <div class="production-info">
+          <div class="money-info">
+            <div class="budget">
+              <div>제작비</div>
+              <div class="budget-value"></div>
+            </div>
+            <div class="revenue">
+              <div>수익</div>
+              <div class="revenue-value"></div>
+            </div>
+          </div>
+          <div class="production-title">제작</div>
+          <div class="company-info">
+            <template id="company-item-template">
+              <div class="company-item">
+                <img src="" alt="" />
+                <span></span>
+              </div>
+            </template>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer">© 2026. J-Movies. All rights reserved.</div>
+    </div>
+  </body>
+</html>

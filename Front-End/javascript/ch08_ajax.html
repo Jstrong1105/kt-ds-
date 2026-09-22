@@ -1,0 +1,54 @@
+<!-- @format -->
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link type="text/css" rel="stylesheet" href="ch08_ajax.css" />
+    <script type="text/javascript" src="./ch08.js"></script>
+  </head>
+  <body>
+    <div class="spinner"></div>
+
+    <button class="load-git-users" type="button">Load Git Users</button>
+    <button class="load-comments" type="button">Load Comments</button>
+    <button class="load-posts" type="button">Load Posts</button>
+
+    <h1>Posts</h1>
+    <ul class="posts"></ul>
+
+    <h1>Comments</h1>
+    <ul class="comments"></ul>
+
+    <h1>Github Users</h1>
+    <ul class="github-users"></ul>
+
+    <template id="github-user-template">
+      <li>
+        <a href="">
+          <img src="" />
+        </a>
+        <div class="user-name"></div>
+      </li>
+    </template>
+
+    <template id="post-item-template">
+      <li data-user-id="" data-id="">
+        <div class="title"></div>
+        <div class="body"></div>
+      </li>
+    </template>
+
+    <template id="comments-item-template">
+      <li data-post-id="">
+        <ul class="author">
+          <li class="name"></li>
+          <li class="email"></li>
+        </ul>
+        <div class="body"></div>
+      </li>
+    </template>
+  </body>
+</html>

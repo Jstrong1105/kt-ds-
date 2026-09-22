@@ -1,10 +1,70 @@
-.header {
-  height: 100px;
-  background-color: blue;
+* {
+  box-sizing: border-box;
 }
 
-.side-bar {
-  width: 100px;
+body {
+  margin: 0;
+  background-color: #333;
+}
+
+.wrapper {
+}
+
+.title {
+  height: 150px;
+  background-color: #555;
+
+  /* 임시 */
+  text-align: center;
+  font-size: 3rem;
+
+  margin-bottom: 30px;
+}
+
+.level {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  margin-bottom: 10px;
+
+  & > button {
+    width: 50px;
+    height: 30px;
+  }
+}
+
+.board {
+  width: 500px;
   height: 500px;
-  background-color: yellow;
+
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  gap: 1px;
+
+  background-color: #999;
+}
+
+.cell {
+  border: 1px solid #333;
+}
+
+.close-cell {
+  background-color: #aaa;
+
+  &:hover {
+    cursor: pointer;
+    background-color: rgb(248, 241, 227);
+  }
+}
+
+.open-cell {
+  background-color: #555;
+
+  &:hover {
+    cursor: no-drop;
+  }
 }

@@ -1,0 +1,86 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>J-Movies</title>
+    <link rel="stylesheet" href="../css/tmdb_common.css" type="text/css" />
+    <link rel="stylesheet" href="../css/tmdb_main.css" type="text/css" />
+    <script type="text/javascript" src="../javascript/tmdb_main.js"></script>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="header">
+        <div class="header-left">
+          <img src="../images/logo-icon.svg" alt="" class="logo-icon" />
+          <span>J-Movies</span>
+        </div>
+
+        <div class="header-center">
+          <input type="text" name="kwd" id="kwd" placeholder="영화 검색" />
+          <img src="../images/search-icon.svg" alt="" class="search-icon" />
+        </div>
+
+        <div class="header-right">
+          <div class="icon">
+            <img
+              src="../images/arrow-left-icon.svg"
+              alt=""
+              class="page-before"
+            />
+          </div>
+
+          <div class="icon">
+            <img
+              src="../images/arrow-right-icon.svg"
+              alt=""
+              class="page-after"
+            />
+          </div>
+
+          <div class="icon">
+            <img src="../images/home-icon.svg" alt="" class="home-icon" />
+          </div>
+
+          <div class="icon">
+            <img src="../images/login-icon.svg" alt="" class="login-icon" />
+          </div>
+        </div>
+      </div>
+
+      <div class="aside">
+        <div class="side-btn">
+          <img src="../images/no-fill-star-icon.svg" alt="" />
+          <span>인기 영화</span>
+        </div>
+
+        <div class="side-btn">
+          <img src="../images/sun-icon.svg" alt="" />
+          <span>신규 영화</span>
+        </div>
+
+        <div class="side-btn">
+          <img src="../images/thumb-icon.svg" alt="" />
+          <span>즐겨찾기</span>
+        </div>
+
+        <div class="side-btn">
+          <img src="../images/history-icon.svg" alt="" />
+          <span>최근 시청</span>
+        </div>
+      </div>
+
+      <div class="content"></div>
+
+      <div class="footer">© 2026. J-Movies. All rights reserved.</div>
+    </div>
+
+    <template id="content-item">
+      <div class="item" data-movie-id>
+        <div class="poster">
+          <img src="" alt="" />
+        </div>
+        <div class="title"></div>
+      </div>
+    </template>
+  </body>
+</html>
